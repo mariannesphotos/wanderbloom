@@ -760,7 +760,7 @@ function renderFeatured(list){
       ${(rb||vb)?`<div class="fc-links">${rb}${vb}</div>`:''}
       <div class="fc-body">${g.preview?`<p class="fc-desc">${g.preview}</p>`:''}<span class="fc-hint">Tap to read more →</span></div>
     </article>`;
-  }).join('');
+  }).join('') + '<div class="fc-spacer"></div>';
   // Dots
   const dots=document.getElementById('scrollDots');
   // Build dots after a tick so scroll dimensions are known
