@@ -830,7 +830,7 @@ function renderAll(list){
     const photos=GARDEN_PHOTOS[g.name];
     const pc=photos?`<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`:'';
     return `<article class="garden-card" data-garden="${safeG}">
-      <div class="gc-header cat-${g.category.replace(/[^a-zA-Z]/g, '-')}">${pc}<div class="gc-header-top">${ih}<span class="gc-cat-label">${g.category}</span></div><div class="gc-name">${g.name}</div></div>
+    <div class="gc-header cat-${g.category.replace(/ & /g, '-').replace(/ /g, '-')}">${pc}<div class="gc-header-top">${ih}<span class="gc-cat-label">${g.category}</span></div><div class="gc-name">${g.name}</div></div>
       ${lb}
       ${g.preview?`<div class="gc-body"><p class="gc-preview">${g.preview}</p></div>`:''}
     </article>`;
