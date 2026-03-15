@@ -140,10 +140,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--c
 /* FEATURED CARD */
 .featured-card{flex:0 0 min(320px,78vw);scroll-snap-align:start;scroll-snap-stop:always;background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;}
 .featured-card:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(74,107,78,.14);}
-.fc-header{background:linear-gradient(135deg,var(--sage-dark),var(--sage-mid));padding:12px 14px 11px;position:relative;overflow:hidden;min-height:78px;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;}
+.fc-header{padding:12px 14px 11px;position:relative;overflow:hidden;min-height:78px;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;}
 .fc-header-top{display:flex;align-items:center;gap:7px;margin-bottom:3px;}
 .fc-icon{width:22px;height:22px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.2));}
-.fc-cat{font-size:.62rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--sage-light);}
+.fc-cat{font-size:.62rem;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.9);}
 .fc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;font-weight:400;line-height:1.25;padding-right:28px;}
 .fc-links{display:flex;gap:6px;padding:8px 14px;border-bottom:1px solid var(--border);}
 .fc-link{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;text-decoration:none;padding:5px 10px;border-radius:6px;transition:opacity .15s;white-space:nowrap;}
@@ -747,7 +747,7 @@ function renderFeatured(list){
     const vb=g.visitor_link?`<a class="fc-link visit" href="${g.visitor_link}" target="_blank">📍 Google Maps</a>`:'';
     const pc=photos?`<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`:'';
     return `<article class="featured-card" data-garden="${safeG}">
-      <div class="fc-header">${pc}<div class="fc-header-top">${ih}<span class="fc-cat">${g.category}</span></div><div class="fc-name">${g.name}</div></div>
+      <div class="fc-header cat-${g.category.replace(/ & /g, '-').replace(/ /g, '-')}">${pc}<div class="fc-header-top">${ih}<span class="fc-cat">${g.category}</span></div><div class="fc-name">${g.name}</div></div>
       ${(rb||vb)?`<div class="fc-links">${rb}${vb}</div>`:''}
       <div class="fc-body">${g.preview?`<p class="fc-desc">${g.preview}</p>`:''}<span class="fc-hint">Tap to read more →</span></div>
     </article>`;
