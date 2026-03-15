@@ -815,7 +815,7 @@ function renderFeatured(list){
     scroll.addEventListener('mouseleave',()=>resumeAuto());
     scroll.addEventListener('touchstart',()=>pauseAuto(),{passive:true});
     scroll.addEventListener('touchend',()=>resumeAuto(),{passive:true});
-  },200);
+  },500);
   scroll.addEventListener('mousedown',e=>{sx=e.pageX-scroll.offsetLeft;sl=scroll.scrollLeft;scroll.style.cursor='grabbing';});
   scroll.addEventListener('mouseleave',()=>scroll.style.cursor='grab');
   scroll.addEventListener('mouseup',()=>scroll.style.cursor='grab');
