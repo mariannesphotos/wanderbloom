@@ -787,7 +787,7 @@ function renderFeatured(list){
       const pos=scroll.scrollLeft;
       const cur=Math.round(pos/cardW);
       dots.querySelectorAll('.scroll-dot').forEach((d,j)=>d.classList.toggle('active',j===Math.min(cur,reachable-1)));
-      if(!userScrolling && pos>=maxScroll-5){
+      if(!userScrolling && pos>=maxScroll-cardW*0.4){
         isJumping=true;
         scroll.scrollTo({left:0,behavior:'instant'});
         setTimeout(()=>isJumping=false,100);
