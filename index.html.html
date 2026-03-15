@@ -38,6 +38,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--c
 .mini-map-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,transparent 40%,rgba(74,107,78,.5) 100%);z-index:400;}
 .map-explore-btn{position:absolute;top:12px;right:12px;z-index:500;background:rgba(255,255,255,.95);color:var(--sage-dark);font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:600;padding:6px 13px;border-radius:14px;border:none;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15);}
 .map-label{position:absolute;bottom:14px;left:16px;z-index:500;color:#fff;font-size:.76rem;font-weight:500;text-shadow:0 1px 4px rgba(0,0,0,.4);}
+.gmaps-map-btn{position:absolute;bottom:10px;right:10px;z-index:1000;background:rgba(255,255,255,.92);border-radius:20px;padding:5px 10px;font-size:.72rem;font-weight:600;color:#263829;text-decoration:none;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.gmaps-map-btn{position:absolute;bottom:10px;right:10px;z-index:1000;background:rgba(255,255,255,.92);border-radius:20px;padding:5px 10px;font-size:.72rem;font-weight:600;color:#263829;text-decoration:none;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,.2);}
 
 /* TABS */
 .tabs-bar{background:var(--warm-white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
@@ -351,7 +353,7 @@ footer strong{color:#fff;}
     <div>
      <div class="hero-map-frame">
         <div id="miniMap"></div>
-        <a class="gmaps-inline-link" href="https://www.google.com/maps/d/edit?mid=1xwZhuPTGGuNfWVRhGNMeAE1jcp15cvk&usp=sharing" target="_blank" style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,0.9);border-radius:20px;padding:5px 10px;font-size:.72rem;font-weight:600;color:#263829;text-decoration:none;display:flex;align-items:center;gap:5px;">
+        <a class="gmaps-map-btn" href="https://www.google.com/maps/d/edit?mid=1xwZhuPTGGuNfWVRhGNMeAE1jcp15cvk&usp=sharing" target="_blank" style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,0.9);border-radius:20px;padding:5px 10px;font-size:.72rem;font-weight:600;color:#263829;text-decoration:none;display:flex;align-items:center;gap:5px;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="#263829"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           Open in Google Maps
         </a>
