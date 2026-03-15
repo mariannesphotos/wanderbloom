@@ -779,13 +779,20 @@ function renderFeatured(list){
       scroll.scrollTo({left:+d.dataset.i*cardW,behavior:'smooth'});
     }));
     // Scroll listener - update dots, loop back to start
+    let isJumping=false;
+    let userScrolling=false;
     let userScrollTimer=null;
     scroll.addEventListener('scroll',()=>{
       if(isJumping)return;
       const pos=scroll.scrollLeft;
       const cur=Math.round(pos/cardW);
       dots.querySelectorAll('.scroll-dot').forEach((d,j)=>d.classList.toggle('active',j===Math.min(cur,reachable-1)));
-      );
+      if(!userScrolling && pos>=maxScroll-cardW*0.4){
+        isJumping=true;
+        scroll.scrollTo({left:0,behavior:'instant'});
+        setTimeout(()=>isJumping=false,100);
+      }
+    });
     // Autoscroll
     let autoTimer=setInterval(advance,3500);
     function advance(){
