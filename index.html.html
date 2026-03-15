@@ -771,7 +771,7 @@ function renderFeatured(list){
     const total=featured.length;
     // How many cards are actually reachable by scrolling
     const maxScroll=scroll.scrollWidth-scroll.clientWidth;
-    const reachable=total;
+    const reachable=window.innerWidth<=780?total:Math.min(total, Math.floor(maxScroll/cardW)+1);
     // Build dots based on reachable count
     dots.innerHTML=Array.from({length:reachable},(_,i)=>`<div class="scroll-dot ${i===0?'active':''}" data-i="${i}"></div>`).join('');
     // Dot click handlers
