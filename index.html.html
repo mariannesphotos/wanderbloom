@@ -903,6 +903,13 @@ document.getElementById('filterRow').addEventListener('click',e=>{
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');currentFilter=btn.dataset.cat;applyFilters();
 });
+document.getElementById('filterRow').addEventListener('touchstart',e=>{
+  const wrap=e.target.closest('.filter-btn-wrap');if(!wrap)return;
+  const tooltip=wrap.querySelector('.cat-tooltip');if(!tooltip)return;
+  document.querySelectorAll('.cat-tooltip').forEach(t=>t.style.display='none');
+  tooltip.style.display='block';
+  setTimeout(()=>tooltip.style.display='none',2500);
+},{passive:true});
 document.getElementById('searchInput').addEventListener('input',e=>{currentSearch=e.target.value;applyFilters();});
 
 // INIT
