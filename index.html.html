@@ -881,7 +881,7 @@ function renderAll(list){
 
 function updateCount(n){document.getElementById('resultsCount').textContent=n===GARDENS.length?`${n} gardens`:`${n} of ${GARDENS.length}`;}
 
-let currentFilter='all',currentSearch='',currentProvince='all';
+let currentFilter='all',currentSearch='',currentProvince='all',currentReelFilter=false;
 let miniMapMarkers=[];
 function updateMiniMapFilter(list){
   if(!miniMapMarkers.length)return;
@@ -896,7 +896,8 @@ function applyFilters(){
   let list=[...GARDENS];
   if(currentFilter==='reel')list=list.filter(g=>g.has_reel);
   else if(currentFilter!=='all')list=list.filter(g=>g.category===currentFilter);
-  if(currentProvince!=='all')list=list.filter(g=>g.province===currentProvince);
+  if(currentReelFilter)list=list.filter(g=>g.has_reel);
+if(currentProvince!=='all')list=list.filter(g=>g.province===currentProvince);
   if(q)list=list.filter(g=>g.name.toLowerCase().includes(q)||g.category.toLowerCase().includes(q)||(g.preview||'').toLowerCase().includes(q));
   renderFeatured(list);
   renderAll(list);
