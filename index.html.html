@@ -241,7 +241,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;op
 
 /* MAP */
 #mapPanel.active{display:flex;flex-direction:column;}
-.map-controls-bar{background:#263829;border-bottom:1px solid rgba(255,255,255,0.1);padding:9px 16px;display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
+.map-controls-bar{background:#263829;border-bottom:1px solid rgba(255,255,255,0.1);padding:9px 16px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;}
 .map-controls-bar::-webkit-scrollbar{display:none;}
 .map-filter-wrap{position:relative;display:inline-block;}
 .map-filter-btn{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:18px;border:1px solid rgba(255,255,255,0.15);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:.73rem;font-weight:500;cursor:pointer;color:var(--charcoal);transition:all .14s;white-space:nowrap;flex-shrink:0;}
