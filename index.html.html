@@ -479,6 +479,21 @@
       }
 
       /* MAP GUIDE */
+
+      #guidePanel {
+  position: relative;
+  overflow: hidden;
+}
+#guidePanel .guide-bg-sprig {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 340px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
       .guide-inner {
         max-width: 720px;
         margin: 0 auto;
@@ -2120,7 +2135,8 @@
 
     <!-- GUIDE PANEL -->
     <div class="panel" id="guidePanel">
-      <div class="guide-inner">
+      <img src="https://i.imgur.com/Q0iUjim.png" class="guide-bg-sprig" alt="">
+<div class="guide-inner">
         <h2>Map <em>guide</em></h2>
         <p class="guide-lead">
           Everything you need to get the most out of this map — whether you're
