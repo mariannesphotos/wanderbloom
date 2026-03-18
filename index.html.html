@@ -682,6 +682,11 @@ function renderMapMarkers(filter){
   });
 }
 function filterMap(btn,cat){
+  if(btn.classList.contains('active')&&cat!=='all'){
+    document.querySelectorAll('.map-filter-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.map-filter-btn')[0].classList.add('active');
+    renderMapMarkers('all');return;
+  }
   document.querySelectorAll('.map-filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');renderMapMarkers(cat);
 }
