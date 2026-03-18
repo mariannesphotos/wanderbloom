@@ -916,9 +916,14 @@ document.getElementById('filterRow').addEventListener('click',e=>{
 document.getElementById('filterRow').addEventListener('touchstart',e=>{
   const wrap=e.target.closest('.filter-btn-wrap');if(!wrap)return;
   const tooltip=wrap.querySelector('.cat-tooltip');if(!tooltip)return;
-  document.querySelectorAll('.cat-tooltip').forEach(t=>t.style.display='none');
+  document.querySelectorAll('.cat-tooltip').forEach(t=>{t.style.display='none';t.style.position='';t.style.top='';t.style.left='';t.style.transform='';});
+  const rect=wrap.getBoundingClientRect();
+  tooltip.style.position='fixed';
+  tooltip.style.top=(rect.bottom+8)+'px';
+  tooltip.style.left=Math.min(rect.left,window.innerWidth-230)+'px';
+  tooltip.style.transform='none';
   tooltip.style.display='block';
-  setTimeout(()=>tooltip.style.display='none',2500);
+  setTimeout(()=>{tooltip.style.display='none';tooltip.style.position='';tooltip.style.top='';tooltip.style.left='';tooltip.style.transform='';},2500);
 },{passive:true});
 document.getElementById('searchInput').addEventListener('input',e=>{currentSearch=e.target.value;applyFilters();});
 
