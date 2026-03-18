@@ -900,6 +900,11 @@ function applyFilters(){
 }
 document.getElementById('filterRow').addEventListener('click',e=>{
   const btn=e.target.closest('.filter-btn');if(!btn)return;
+  if(btn.classList.contains('active')&&btn.dataset.cat!=='all'){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+    currentFilter='all';applyFilters();return;
+  }
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');currentFilter=btn.dataset.cat;applyFilters();
 });
