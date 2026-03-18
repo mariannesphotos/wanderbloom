@@ -4287,84 +4287,98 @@
 
       // Filter buttons
       function buildFilterButtons() {
-        const row = document.getElementById("filterRow");
-        const mapBar = document.getElementById("mapFilterBar");
-        // Province dropdown for map
-        const mPW = document.createElement("div");
-        mPW.style.cssText = "flex-shrink:0;padding-left:6px;";
-        const mPS = document.createElement("select");
-        mPS.className = "province-select";
-        mPS.id = "mapProvinceSelect";
-        const defOpt = document.createElement("option");
-        defOpt.value = "all";
-        defOpt.textContent = "🌍 All provinces";
-        mPS.appendChild(defOpt);
-        ALL_PROVINCES.forEach((p) => {
-          const count = GARDENS.filter((g) => g.province === p).length;
-          const opt = document.createElement("option");
-          opt.value = p;
-          opt.textContent = `${p} (${count})`;
-          mPS.appendChild(opt);
-        });
-        mPS.addEventListener("change", () => {
-          mPS.classList.toggle("active", mPS.value !== "all");
-          currentMapProvince = mPS.value;
-          renderMapMarkers(currentMapCat);
-        });
-        const reelWrap = document.createElement("div");
-        reelWrap.className = "map-filter-wrap";
-        const reelBtn = document.createElement("button");
-        reelBtn.className = "map-filter-btn map-reel-filter";
-        reelBtn.innerHTML = "🎥 With reel";
-        reelBtn.onclick = () => {
-          if (reelBtn.classList.contains("active")) {
-            reelBtn.classList.remove("active");
-            currentMapReelFilter = false;
-            renderMapMarkers(currentMapCat);
-            return;
-          }
-          reelBtn.classList.add("active");
-          currentMapReelFilter = true;
-          renderMapMarkers(currentMapCat);
-        };
-        reelWrap.appendChild(reelBtn);
-        mapBar.insertBefore(reelWrap, mapBar.firstChild);
-        mPW.appendChild(mPS);
-        mapBar.appendChild(mPW);
-        ALL_CATS.forEach((cat) => {
-          const ih = ICONS[cat] ? `<img src="${ICONS[cat]}" alt="">` : "";
-          const lbl = cat.replace(" Gardens", "").replace(" & Sculpture", "");
-          const desc = CAT_DESC[cat] || "";
-          const w = document.createElement("div");
-          w.className = "filter-btn-wrap";
-          const b = document.createElement("button");
-          b.className = "filter-btn";
-          b.dataset.cat = cat;
-          b.innerHTML = `${ih}${lbl}`;
-          if (desc) {
-            const t = document.createElement("div");
-            t.className = "cat-tooltip";
-            t.textContent = desc;
-            w.appendChild(t);
-          }
-          w.appendChild(b);
-          row.appendChild(w);
-          const mw = document.createElement("div");
-          mw.className = "map-filter-wrap";
-          const mb = document.createElement("button");
-          mb.className = "map-filter-btn";
-          mb.innerHTML = `${ih}${lbl}`;
-          mb.onclick = () => filterMap(mb, cat);
-          if (desc) {
-            const mt = document.createElement("div");
-            mt.className = "map-cat-tooltip";
-            mt.textContent = desc;
-            mw.appendChild(mt);
-          }
-          mw.appendChild(mb);
-          mapBar.appendChild(mw);
-        });
-      }
+  const row = document.getElementById("filterRow");
+  const mapBar = document.getElementById("mapFilterBar");
+
+  // MAP: With reel button first
+  const reelWrap = document.createElement("div");
+  reelWrap.className = "map-filter-wrap";
+  const reelBtn = document.createElement("button");
+  reelBtn.className = "map-filter-btn map-reel-filter";
+  reelBtn.innerHTML = "🎥 With reel";
+  reelBtn.onclick = () => {
+    if (reelBtn.classList.contains("active")) {
+      reelBtn.classList.remove("active");
+      currentMapReelFilter = false;
+      renderMapMarkers(currentMapCat);
+      return;
+    }
+    reelBtn.classList.add("active");
+    currentMapReelFilter = true;
+    renderMapMarkers(currentMapCat);
+  };
+  mapBar.appendChild(reelWrap);
+  reelWrap.appendChild(reelBtn);
+
+  // MAP: Province dropdown second
+  const mPW = document.createElement("div");
+  mPW.style.cssText = "flex-shrink:0;";
+  const mPS = document.createElement("select");
+  mPS.className = "province-select";
+  mPS.id = "mapProvinceSelect";
+  const defOpt = document.createElement("option");
+  defOpt.value = "all";
+  defOpt.textContent = "🌍 All provinces";
+  mPS.appendChild(defOpt);
+  ALL_PROVINCES.forEach((p) => {
+    const count = GARDENS.filter((g) => g.province === p).length;
+    const opt = document.createElement("option");
+    opt.value = p;
+    opt.textContent = `${p} (${count})`;
+    mPS.appendChild(opt);
+  });
+  mPS.addEventListener("change", () => {
+    mPS.classList.toggle("active", mPS.value !== "all");
+    currentMapProvince = mPS.value;
+    renderMapMarkers(currentMapCat);
+  });
+  mPW.appendChild(mPS);
+  mapBar.appendChild(mPW);
+
+  // MAP: Visual separator
+  const sep = document.createElement("div");
+  sep.style.cssText = "width:1px;height:20px;background:rgba(255,255,255,0.2);flex-shrink:0;margin:0 4px;";
+  mapBar.appendChild(sep);
+
+  // Categories for both list and map
+  ALL_CATS.forEach((cat) => {
+    const ih = ICONS[cat] ? `<img src="${ICONS[cat]}" alt="">` : "";
+    const lbl = cat.replace(" Gardens", "").replace(" & Sculpture", "");
+    const desc = CAT_DESC[cat] || "";
+
+    // List row
+    const w = document.createElement("div");
+    w.className = "filter-btn-wrap";
+    const b = document.createElement("button");
+    b.className = "filter-btn";
+    b.dataset.cat = cat;
+    b.innerHTML = `${ih}${lbl}`;
+    if (desc) {
+      const t = document.createElement("div");
+      t.className = "cat-tooltip";
+      t.textContent = desc;
+      w.appendChild(t);
+    }
+    w.appendChild(b);
+    row.appendChild(w);
+
+    // Map bar
+    const mw = document.createElement("div");
+    mw.className = "map-filter-wrap";
+    const mb = document.createElement("button");
+    mb.className = "map-filter-btn";
+    mb.innerHTML = `${ih}${lbl}`;
+    mb.onclick = () => filterMap(mb, cat);
+    if (desc) {
+      const mt = document.createElement("div");
+      mt.className = "map-cat-tooltip";
+      mt.textContent = desc;
+      mw.appendChild(mt);
+    }
+    mw.appendChild(mb);
+    mapBar.appendChild(mw);
+  });
+}
 
       // Tabs
       let fullMapInit = false;
