@@ -913,6 +913,15 @@ document.getElementById('filterRow').addEventListener('click',e=>{
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');currentFilter=btn.dataset.cat;applyFilters();
 });
+document.querySelector('.reel-filter').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');if(!btn)return;
+  if(btn.classList.contains('active')){
+    btn.classList.remove('active');
+    currentReelFilter=false;applyFilters();return;
+  }
+  btn.classList.add('active');
+  currentReelFilter=true;applyFilters();
+});
 document.getElementById('filterRow').addEventListener('touchstart',e=>{
   const wrap=e.target.closest('.filter-btn-wrap');if(!wrap)return;
   const tooltip=wrap.querySelector('.cat-tooltip');if(!tooltip)return;
