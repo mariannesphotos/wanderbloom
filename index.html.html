@@ -608,6 +608,14 @@ function buildFilterButtons() {
     currentMapProvince = mPS.value;
     renderMapMarkers(currentMapCat);
   });
+  const reelWrap=document.createElement('div'); reelWrap.className='map-filter-wrap';
+  const reelBtn=document.createElement('button'); reelBtn.className='map-filter-btn map-reel-filter';
+  reelBtn.innerHTML='🎥 With reel';
+  reelBtn.onclick=()=>{
+    if(reelBtn.classList.contains('active')){reelBtn.classList.remove('active');currentMapReelFilter=false;renderMapMarkers(currentMapCat);return;}
+    reelBtn.classList.add('active');currentMapReelFilter=true;renderMapMarkers(currentMapCat);
+  };
+  reelWrap.appendChild(reelBtn); mapBar.insertBefore(reelWrap, mapBar.firstChild);
   mPW.appendChild(mPS); mapBar.appendChild(mPW);
   ALL_CATS.forEach(cat => {
     const ih = ICONS[cat]?`<img src="${ICONS[cat]}" alt="">`:'';
@@ -669,12 +677,13 @@ function initFullMap(){
   markersLayer=L.layerGroup().addTo(fullMap);
   renderMapMarkers('all');
 }
-let currentMapCat='all', currentMapProvince='all';
+let currentMapCat='all', currentMapProvince='all', currentMapReelFilter=false;
 function renderMapMarkers(filter){
   currentMapCat=filter;
   markersLayer.clearLayers();
   let list=filter==='all'?GARDENS:filter==='reel'?GARDENS.filter(g=>g.has_reel):GARDENS.filter(g=>g.category===filter);
-  if(currentMapProvince!=='all')list=list.filter(g=>g.province===currentMapProvince);
+  if(currentMapReelFilter)list=list.filter(g=>g.has_reel);
+if(currentMapProvince!=='all')list=list.filter(g=>g.province===currentMapProvince);
   list.forEach(g=>{
     const sz=g.featured?28:22;const iu=ICONS[g.category];
     const m=iu?L.marker([g.lat,g.lng],{icon:L.icon({iconUrl:iu,iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]})}):L.marker([g.lat,g.lng],{icon:L.divIcon({className:'',html:`<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${CAT_COLORS[g.category]||'#7a9e7e'};border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.22);cursor:pointer;"></div>`,iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]})});
