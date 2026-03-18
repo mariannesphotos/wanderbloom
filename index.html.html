@@ -595,7 +595,7 @@ function buildFilterButtons() {
   const row = document.getElementById('filterRow');
   const mapBar = document.getElementById('mapFilterBar');
   // Province dropdown for map
-  const mPW = document.createElement('div'); mPW.style.cssText='margin-left:auto;flex-shrink:0;padding-left:6px;';
+  const mPW = document.createElement('div'); mPW.style.cssText='flex-shrink:0;padding-left:6px;';
   const mPS = document.createElement('select'); mPS.className='province-select'; mPS.id='mapProvinceSelect';
   const defOpt = document.createElement('option'); defOpt.value='all'; defOpt.textContent='🌍 All provinces';
   mPS.appendChild(defOpt);
