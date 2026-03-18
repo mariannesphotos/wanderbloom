@@ -478,6 +478,20 @@
         line-height: 1.45;
       }
 
+      #aboutPanel {
+  position: relative;
+  overflow: hidden;
+}
+#aboutPanel .about-bg-sprig {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 700px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
       /* MAP GUIDE */
 
       #guidePanel {
@@ -2280,7 +2294,8 @@
 
     <!-- ABOUT PANEL -->
     <div class="panel" id="aboutPanel">
-      <div class="about-inner">
+      <img src="https://i.imgur.com/Q0iUjim.png" class="about-bg-sprig" alt="">
+<div class="about-inner">
         <h2>About <em>Wander & Bloom</em></h2>
         <p class="about-tagline">
           A free photography garden map of the Netherlands
