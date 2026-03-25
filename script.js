@@ -2501,10 +2501,8 @@
           const nameBlockH = lines.length * lineH;
           const bottomZoneTop = H - 280;
 
-          // Terracotta accent line above name
-          ctx.fillStyle = "#c4785a";
-          ctx.fillRect(pad, bottomZoneTop - nameBlockH - 52, 80, 3);
           let nameY = bottomZoneTop - nameBlockH - 28;
+          ctx.fillStyle = "#ffffff";
           for (const l of lines) {
             ctx.fillText(l, pad, nameY);
             nameY += lineH;
@@ -2523,7 +2521,7 @@
           ctx.fillText(`${g.category}  ·  ${g.province}`, metaX, metaY);
 
           // Thin divider
-          ctx.strokeStyle = "rgba(168, 197, 170, 0.35)";
+          ctx.strokeStyle = "#c4785a";
           ctx.lineWidth = 1.5;
           ctx.beginPath();
           ctx.moveTo(pad, H - 220);
