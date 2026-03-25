@@ -100,7 +100,8 @@
           has_reel: true,
           category: "Butterfly Gardens",
           featured: false,
-          province: "Friesland",
+          province: "Flevoland",
+          city: "Luttelgeest",
         },
         {
           name: "Hortus botanicus Leiden",
@@ -169,7 +170,8 @@
           has_reel: false,
           category: "Botanical Gardens",
           featured: false,
-          province: "Friesland",
+          province: "Noord-Holland",
+          city: "Den Helder",
         },
         {
           name: "Hortus Botanicus TU Delft",
@@ -199,6 +201,7 @@
           category: "Botanical Gardens",
           featured: true,
           province: "Friesland",
+          city: "Buitenpost",
         },
         {
           name: "Trompenburg Tuinen & Arboretum",
@@ -573,7 +576,8 @@
           has_reel: false,
           category: "Historical Gardens",
           featured: false,
-          province: "Friesland",
+          province: "Groningen",
+          city: "Leens",
         },
         {
           name: "Kasteeltuin Hemmen",
@@ -723,6 +727,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Friesland",
+          city: "Jelsum",
         },
         {
           name: "Kasteel Warmelo",
@@ -1353,6 +1358,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Friesland",
+          city: "Jubbega",
         },
         {
           name: "Parkhof Swalmen",
@@ -1583,7 +1589,8 @@
           has_reel: false,
           category: "Tulip Gardens",
           featured: false,
-          province: "Friesland",
+          province: "Noord-Holland",
+          city: "Anna Paulowna",
         },
         {
           name: "Tulip Experience Amsterdam",
@@ -1754,6 +1761,7 @@
           category: "Tea Gardens",
           featured: false,
           province: "Friesland",
+          city: "Nijega",
         },
         {
           name: "De Millinger Theetuin",
