@@ -2816,7 +2816,7 @@
               ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
               : "";
             return `<article class="garden-card" data-garden="${safeG}">
-    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div>
+    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div></div>
       ${lb}
       ${g.preview ? `<div class="gc-body"><p class="gc-preview">${g.preview}</p></div>` : ""}
     </article>`;
