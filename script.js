@@ -2437,7 +2437,7 @@
         const ctx = canvas.getContext("2d");
         const firstPhoto = (photos && photos.length) ? photos[0] : (g.featured_img || null);
 
-        function drawCard(img) {
+        function drawCard(img, iconImg) {
           // Background
           ctx.fillStyle = "#1a2e1c";
           ctx.fillRect(0, 0, W, H);
@@ -2499,10 +2499,17 @@
             nameY += lineH;
           }
 
-          // Category · Province
-          ctx.fillStyle = "#a8c5aa";
+          // Category icon + Category · Province
           ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
-          ctx.fillText(`${g.category}  ·  ${g.province}`, pad, nameY + 18);
+          const metaY = nameY + 18;
+          const iconSize = 40;
+          let metaX = pad;
+          if (iconImg) {
+            ctx.drawImage(iconImg, metaX, metaY - iconSize + 6, iconSize, iconSize);
+            metaX += iconSize + 14;
+          }
+          ctx.fillStyle = "#a8c5aa";
+          ctx.fillText(`${g.category}  ·  ${g.province}`, metaX, metaY);
 
           // Thin divider
           ctx.strokeStyle = "rgba(168, 197, 170, 0.35)";
@@ -2512,10 +2519,19 @@
           ctx.lineTo(W - pad, H - 220);
           ctx.stroke();
 
-          // Wander & Bloom
-          ctx.fillStyle = "#ffffff";
+          // Wander & Bloom — & in terracotta
           ctx.font = `italic 400 40px "Playfair Display", Georgia, serif`;
-          ctx.fillText("Wander & Bloom", pad, H - 168);
+          const wanderText = "Wander ";
+          const ampText = "&";
+          const bloomText = " Bloom";
+          const wanderW = ctx.measureText(wanderText).width;
+          const ampW = ctx.measureText(ampText).width;
+          ctx.fillStyle = "#ffffff";
+          ctx.fillText(wanderText, pad, H - 168);
+          ctx.fillStyle = "#c4785a";
+          ctx.fillText(ampText, pad + wanderW, H - 168);
+          ctx.fillStyle = "#ffffff";
+          ctx.fillText(bloomText, pad + wanderW + ampW, H - 168);
 
           // by @marianne_eggink
           ctx.fillStyle = "#a8c5aa";
@@ -2530,19 +2546,23 @@
           link.click();
         }
 
+        function loadImage(src) {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = () => resolve(img);
+            img.onerror = () => resolve(null);
+            img.src = src;
+          });
+        }
+        const iconSrc = ICONS[g.category] || null;
         Promise.all([
           document.fonts.load(`italic 700 74px "Playfair Display"`),
           document.fonts.load(`400 36px "DM Sans"`),
-        ]).then(() => {
-          if (firstPhoto) {
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.onload = () => drawCard(img);
-            img.onerror = () => drawCard(null);
-            img.src = firstPhoto;
-          } else {
-            drawCard(null);
-          }
+          firstPhoto ? loadImage(firstPhoto) : Promise.resolve(null),
+          iconSrc ? loadImage(iconSrc) : Promise.resolve(null),
+        ]).then(([, , img, iconImg]) => {
+          drawCard(img, iconImg);
         });
       }
       function closeSheet() {
