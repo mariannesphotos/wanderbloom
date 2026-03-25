@@ -2545,6 +2545,11 @@
           ctx.font = `300 30px "DM Sans", Arial, sans-serif`;
           ctx.fillText("by @marianne_eggink", pad, H - 118);
 
+          // URL
+          ctx.fillStyle = "rgba(168, 197, 170, 0.55)";
+          ctx.font = `300 24px "DM Sans", Arial, sans-serif`;
+          ctx.fillText("mariannesphotos.github.io/wanderbloom", pad, H - 72);
+
           // Trigger download
           const link = document.createElement("a");
           const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
