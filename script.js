@@ -2471,7 +2471,7 @@
 
           // Bucket list badge at top
           ctx.font = `400 28px "DM Sans", Arial, sans-serif`;
-          const badgeText = "⭐  On my bucket list";
+          const badgeText = "⭐ On my bucket list";
           const badgeW = ctx.measureText(badgeText).width + 48;
           const badgeH = 52;
           const badgeX = pad;
