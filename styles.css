@@ -245,23 +245,6 @@
         gap: 5px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
-      .gmaps-map-btn {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.92);
-        border-radius: 20px;
-        padding: 5px 10px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: #263829;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
 
       /* TABS */
       .tabs-bar {
