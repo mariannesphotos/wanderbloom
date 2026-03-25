@@ -2443,12 +2443,10 @@
           ctx.fillRect(0, 0, W, H);
 
           if (img) {
-            ctx.filter = "blur(4px)";
             const scale = Math.max(W / img.width, H / img.height);
             const w = img.width * scale;
             const h = img.height * scale;
             ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
-            ctx.filter = "none";
           } else if (sprigImg) {
             ctx.globalAlpha = 0.18;
             const scale = Math.max(W / sprigImg.width, H / sprigImg.height) * 1.1;
