@@ -47,6 +47,7 @@
           category: "Butterfly Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Harskamp",
         },
         {
           name: "Vlinders aan de Vliet",
@@ -311,6 +312,7 @@
           category: "Botanical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Doorwerth",
         },
         {
           name: "Botanische Tuinen Universiteit Utrecht",
@@ -404,6 +406,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Arnhem",
         },
         {
           name: "Rijksmuseum Muiderslot",
@@ -433,6 +436,7 @@
           category: "Historical Gardens",
           featured: true,
           province: "Gelderland",
+          city: "Oosterbeek",
         },
         {
           name: "Pandhof van de Dom",
@@ -485,6 +489,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Apeldoorn",
         },
         {
           name: "Kasteel Keukenhof",
@@ -538,6 +543,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "'t Harde",
         },
         {
           name: "Menkemaborg",
@@ -564,6 +570,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Vorden",
         },
         {
           name: "Museum Borg Verhildersum",
@@ -701,6 +708,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "De Steeg",
         },
         {
           name: "Begijnhof",
@@ -822,6 +830,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Gelderland",
+          city: "'s-Heerenberg",
         },
         {
           name: "Slot Zeist",
@@ -1005,6 +1014,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Lunteren",
         },
         {
           name: "Botanische tuin Arboretum Oudenbosch",
@@ -1061,6 +1071,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Putten",
         },
         {
           name: "Arboretum-Assen",
@@ -1087,6 +1098,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Wageningen",
         },
         {
           name: "Notoarestoen",
@@ -1141,6 +1153,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Wageningen",
         },
         {
           name: "Belmonte Arboretum",
@@ -1155,6 +1168,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Wageningen",
         },
         {
           name: "Heemtuin Capelle",
@@ -1345,6 +1359,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Teuge",
         },
         {
           name: "’T Bokkehuske",
@@ -1385,6 +1400,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Gelderland",
+          city: "'t Harde",
         },
         {
           name: "De Beukenhof",
@@ -1398,6 +1414,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Barneveld",
         },
         {
           name: "De Luie Tuinman",
@@ -1452,6 +1469,7 @@
           category: "Zoo Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Arnhem",
         },
         {
           name: "Diergaarde Blijdorp",
@@ -1633,6 +1651,7 @@
           category: "Show Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Kotten",
         },
         {
           name: "Kwekerij Jacobs",
@@ -1690,6 +1709,7 @@
           category: "Show Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Eibergen",
         },
         {
           name: "Amstelpark gardens",
@@ -1775,6 +1795,7 @@
           category: "Tea Gardens",
           featured: false,
           province: "Gelderland",
+          city: "Millingen aan de Rijn",
         },
         {
           name: "Zorghoeve en Theetuin Sequoiahof",
