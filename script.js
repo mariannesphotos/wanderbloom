@@ -1123,6 +1123,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Drenthe",
+          city: "Anloo",
         },
         {
           name: "Arboretum De Dreijen",
@@ -1243,6 +1244,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Drenthe",
+          city: "Loozen",
         },
         {
           name: "Thijsse's Hof",
@@ -1403,6 +1405,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Drenthe",
+          city: "Ruinen",
         },
         {
           name: "Almere Jungle",
@@ -1429,6 +1432,7 @@
           category: "Zoo Gardens",
           featured: false,
           province: "Drenthe",
+          city: "Emmen",
         },
         {
           name: "Burgers' Zoo",
@@ -1512,6 +1516,7 @@
           category: "Art & Sculpture Gardens",
           featured: false,
           province: "Drenthe",
+          city: "Gees",
         },
         {
           name: "Drents Museum De Buitenplaats",
@@ -1524,7 +1529,8 @@
           has_reel: false,
           category: "Art & Sculpture Gardens",
           featured: false,
-          province: "Groningen",
+          province: "Drenthe",
+          city: "Eelde",
         },
         {
           name: "Willem Merkxtuin",
