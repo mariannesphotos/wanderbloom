@@ -2516,7 +2516,7 @@
           const iconSize = 60;
           let metaX = pad;
           if (iconImg) {
-            ctx.drawImage(iconImg, metaX, metaY - iconSize + 10, iconSize, iconSize);
+            ctx.drawImage(iconImg, metaX, metaY - iconSize / 2 - 13, iconSize, iconSize);
             metaX += iconSize + 16;
           }
           ctx.fillStyle = "#a8c5aa";
