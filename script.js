@@ -2437,7 +2437,7 @@
         const ctx = canvas.getContext("2d");
         const firstPhoto = (photos && photos.length) ? photos[0] : (g.featured_img || null);
 
-        function drawCard(img, iconImg) {
+        function drawCard(img, iconImg, sprigImg) {
           // Background
           ctx.fillStyle = "#1a2e1c";
           ctx.fillRect(0, 0, W, H);
@@ -2447,6 +2447,13 @@
             const w = img.width * scale;
             const h = img.height * scale;
             ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+          } else if (sprigImg) {
+            ctx.globalAlpha = 0.18;
+            const scale = Math.max(W / sprigImg.width, H / sprigImg.height) * 1.1;
+            const w = sprigImg.width * scale;
+            const h = sprigImg.height * scale;
+            ctx.drawImage(sprigImg, (W - w) / 2, (H - h) / 2, w, h);
+            ctx.globalAlpha = 1;
           }
 
           // Dark gradient over bottom half
@@ -2561,8 +2568,9 @@
           document.fonts.load(`400 36px "DM Sans"`),
           firstPhoto ? loadImage(firstPhoto) : Promise.resolve(null),
           iconSrc ? loadImage(iconSrc) : Promise.resolve(null),
-        ]).then(([, , img, iconImg]) => {
-          drawCard(img, iconImg);
+          !firstPhoto ? loadImage("https://i.imgur.com/8jih041.png") : Promise.resolve(null),
+        ]).then(([, , img, iconImg, sprigImg]) => {
+          drawCard(img, iconImg, sprigImg);
         });
       }
       function closeSheet() {
