@@ -1392,6 +1392,26 @@
         cursor: pointer;
         font-family: "DM Sans", sans-serif;
       }
+      .sheet-save-cta {
+        display: block;
+        width: 100%;
+        margin-top: 28px;
+        padding: 16px 20px;
+        background: var(--cream);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--sage-dark);
+        text-align: center;
+        cursor: pointer;
+        line-height: 1.5;
+        transition: background 0.15s;
+      }
+      .sheet-save-cta:hover {
+        background: var(--warm-white);
+      }
       .sheet-no-link {
         font-size: 0.78rem;
         color: #b0aca4;
