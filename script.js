@@ -2575,12 +2575,21 @@
           ctx.font = `300 28px "DM Sans", Arial, sans-serif`;
           ctx.fillText("mariannesphotos.github.io/wanderbloom", pad, H - 72);
 
-          // Trigger download
-          const link = document.createElement("a");
+          // Save: use Web Share API on mobile (saves to Photos), fallback to download
           const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-          link.download = `wanderbloom-${slug}.png`;
-          link.href = canvas.toDataURL("image/png");
-          link.click();
+          const filename = `wanderbloom-${slug}.png`;
+          canvas.toBlob((blob) => {
+            const file = new File([blob], filename, { type: "image/png" });
+            if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+              navigator.share({ files: [file], title: g.name });
+            } else {
+              const link = document.createElement("a");
+              link.download = filename;
+              link.href = URL.createObjectURL(blob);
+              link.click();
+              URL.revokeObjectURL(link.href);
+            }
+          }, "image/png");
         }
 
         function loadImage(src) {
