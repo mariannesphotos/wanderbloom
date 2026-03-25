@@ -2490,11 +2490,15 @@
             (_, i) =>
               `<div class="scroll-dot ${i === 0 ? "active" : ""}" data-i="${i}"></div>`,
           ).join("");
+          // Helper: last dot always scrolls to true end
+          function targetFor(i) {
+            return i >= reachable - 1 ? maxScroll : i * cardW;
+          }
           // Dot click handlers
           dots.querySelectorAll(".scroll-dot").forEach((d) =>
             d.addEventListener("click", () => {
               scroll.scrollTo({
-                left: +d.dataset.i * cardW,
+                left: targetFor(+d.dataset.i),
                 behavior: "smooth",
               });
             }),
@@ -2526,7 +2530,7 @@
           function advance() {
             const cur = Math.round(scroll.scrollLeft / cardW);
             const next = cur + 1 >= reachable ? 0 : cur + 1;
-            scroll.scrollTo({ left: next * cardW, behavior: "smooth" });
+            scroll.scrollTo({ left: targetFor(next), behavior: "smooth" });
           }
           function pauseAuto() {
             userScrolling = true;
