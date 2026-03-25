@@ -2575,21 +2575,6 @@
           ctx.font = `300 28px "DM Sans", Arial, sans-serif`;
           ctx.fillText("mariannesphotos.github.io/wanderbloom", pad, H - 72);
 
-          // Save: use Web Share API on mobile (saves to Photos), fallback to download
-          const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-          const filename = `wanderbloom-${slug}.png`;
-          canvas.toBlob((blob) => {
-            const file = new File([blob], filename, { type: "image/png" });
-            if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-              navigator.share({ files: [file], title: g.name });
-            } else {
-              const link = document.createElement("a");
-              link.download = filename;
-              link.href = URL.createObjectURL(blob);
-              link.click();
-              URL.revokeObjectURL(link.href);
-            }
-          }, "image/png");
         }
 
         function loadImage(src) {
@@ -2601,7 +2586,12 @@
             img.src = src;
           });
         }
+
         const iconSrc = ICONS[g.category] || null;
+        const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+        const filename = `wanderbloom-${slug}.png`;
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
         Promise.all([
           document.fonts.load(`italic 700 74px "Playfair Display"`),
           document.fonts.load(`400 36px "DM Sans"`),
@@ -2610,6 +2600,20 @@
           !firstPhoto ? loadImage("https://i.imgur.com/8jih041.png") : Promise.resolve(null),
         ]).then(([, , img, iconImg, sprigImg]) => {
           drawCard(img, iconImg, sprigImg);
+          canvas.toBlob((blob) => {
+            if (isIOS && navigator.share && navigator.canShare) {
+              const file = new File([blob], filename, { type: "image/png" });
+              if (navigator.canShare({ files: [file] })) {
+                navigator.share({ files: [file], title: g.name });
+                return;
+              }
+            }
+            const link = document.createElement("a");
+            link.download = filename;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            URL.revokeObjectURL(link.href);
+          }, "image/png");
         });
       }
       function closeSheet() {
