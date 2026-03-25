@@ -1385,6 +1385,14 @@
         color: var(--sage-dark);
         border: 1.5px solid var(--border);
       }
+      .sheet-link.save {
+        background: var(--sage-dark);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        margin-left: auto;
+      }
       .sheet-no-link {
         font-size: 0.78rem;
         color: #b0aca4;

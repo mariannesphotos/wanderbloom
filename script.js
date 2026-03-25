@@ -2412,7 +2412,10 @@
         if (!lh)
           lh =
             '<span class="sheet-no-link">Search the name in Google Maps to find it</span>';
+        lh += `<button class="sheet-link save" onclick="generateSaveCard()">🖼️ Save card</button>`;
         document.getElementById("sheetLinks").innerHTML = lh;
+        window._sheetGarden = g;
+        window._sheetPhotos = photos;
         document.getElementById("sheetDesc").textContent =
           g.description || g.preview || "No description available yet.";
         const sheet = document.getElementById("bottomSheet");
@@ -2422,6 +2425,111 @@
         document.body.style.overflow = "hidden";
         if (photos && photos.length)
           requestAnimationFrame(() => initGallery("sheetGallery", photos));
+      }
+      function generateSaveCard() {
+        const g = window._sheetGarden;
+        const photos = window._sheetPhotos;
+        if (!g) return;
+        const W = 1080, H = 1350;
+        const canvas = document.createElement("canvas");
+        canvas.width = W;
+        canvas.height = H;
+        const ctx = canvas.getContext("2d");
+        const firstPhoto = (photos && photos.length) ? photos[0] : (g.featured_img || null);
+
+        function drawCard(img) {
+          // Background
+          ctx.fillStyle = "#1a2e1c";
+          ctx.fillRect(0, 0, W, H);
+
+          if (img) {
+            const scale = Math.max(W / img.width, H / img.height);
+            const w = img.width * scale;
+            const h = img.height * scale;
+            ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+          }
+
+          // Dark gradient over bottom half
+          const grad = ctx.createLinearGradient(0, H * 0.4, 0, H);
+          grad.addColorStop(0, "rgba(20, 38, 22, 0)");
+          grad.addColorStop(0.45, "rgba(20, 38, 22, 0.82)");
+          grad.addColorStop(1, "rgba(20, 38, 22, 0.97)");
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, W, H);
+
+          const pad = 72;
+
+          // Garden name — word-wrapped, Playfair Display italic
+          ctx.fillStyle = "#ffffff";
+          ctx.font = `italic 700 74px "Playfair Display", Georgia, serif`;
+          ctx.textAlign = "left";
+          const maxW = W - pad * 2;
+          const words = g.name.split(" ");
+          let line = "", lines = [];
+          for (const word of words) {
+            const test = line ? line + " " + word : word;
+            if (ctx.measureText(test).width > maxW && line) {
+              lines.push(line);
+              line = word;
+            } else {
+              line = test;
+            }
+          }
+          lines.push(line);
+          const lineH = 88;
+          const nameBlockH = lines.length * lineH;
+          const bottomZoneTop = H - 280;
+          let nameY = bottomZoneTop - nameBlockH - 28;
+          for (const l of lines) {
+            ctx.fillText(l, pad, nameY);
+            nameY += lineH;
+          }
+
+          // Category · Province
+          ctx.fillStyle = "#a8c5aa";
+          ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
+          ctx.fillText(`${g.category}  ·  ${g.province}`, pad, nameY + 18);
+
+          // Thin divider
+          ctx.strokeStyle = "rgba(168, 197, 170, 0.35)";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(pad, H - 220);
+          ctx.lineTo(W - pad, H - 220);
+          ctx.stroke();
+
+          // Wander & Bloom
+          ctx.fillStyle = "#ffffff";
+          ctx.font = `italic 400 40px "Playfair Display", Georgia, serif`;
+          ctx.fillText("Wander & Bloom", pad, H - 168);
+
+          // by @marianne_eggink
+          ctx.fillStyle = "#a8c5aa";
+          ctx.font = `300 30px "DM Sans", Arial, sans-serif`;
+          ctx.fillText("by @marianne_eggink", pad, H - 118);
+
+          // Trigger download
+          const link = document.createElement("a");
+          const slug = g.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          link.download = `wanderbloom-${slug}.png`;
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        }
+
+        Promise.all([
+          document.fonts.load(`italic 700 74px "Playfair Display"`),
+          document.fonts.load(`400 36px "DM Sans"`),
+        ]).then(() => {
+          if (firstPhoto) {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = () => drawCard(img);
+            img.onerror = () => drawCard(null);
+            img.src = firstPhoto;
+          } else {
+            drawCard(null);
+          }
+        });
       }
       function closeSheet() {
         const sheet = document.getElementById("bottomSheet");
