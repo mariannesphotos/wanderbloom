@@ -2459,6 +2459,20 @@
 
           const pad = 72;
 
+          // Bucket list badge at top
+          ctx.font = `400 28px "DM Sans", Arial, sans-serif`;
+          const badgeText = "🌿  On my bucket list";
+          const badgeW = ctx.measureText(badgeText).width + 48;
+          const badgeH = 52;
+          const badgeX = pad;
+          const badgeY = 72;
+          ctx.fillStyle = "rgba(20, 38, 22, 0.55)";
+          ctx.beginPath();
+          ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 26);
+          ctx.fill();
+          ctx.fillStyle = "#ffffff";
+          ctx.fillText(badgeText, badgeX + 24, badgeY + 34);
+
           // Garden name — word-wrapped, Playfair Display italic
           ctx.fillStyle = "#ffffff";
           ctx.font = `italic 700 74px "Playfair Display", Georgia, serif`;
