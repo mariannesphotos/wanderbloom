@@ -33,6 +33,7 @@
           category: "Butterfly Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Waarland",
         },
         {
           name: "De Groenerie",
@@ -412,6 +413,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Muiden",
         },
         {
           name: "Tuin de Lage Oorsprong",
@@ -492,6 +494,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Lisse",
         },
         {
           name: "Prinsentuin",
@@ -647,7 +650,8 @@
           has_reel: false,
           category: "Historical Gardens",
           featured: false,
-          province: "Noord-Holland",
+          province: "Utrecht",
+          city: "Baarn",
         },
         {
           name: "Paleistuin Soestdijk",
@@ -676,6 +680,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amsterdam",
         },
         {
           name: "Kasteel Middachten",
@@ -901,6 +906,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amsterdam",
         },
         {
           name: "Kasteel Loenersloot",
@@ -931,6 +937,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amstelveen",
         },
         {
           name: "Siertuin Gooilust",
@@ -946,6 +953,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "'s-Graveland",
         },
         {
           name: "Landgoed Weldam",
@@ -1017,6 +1025,7 @@
           category: "Tree Gardens",
           featured: true,
           province: "Noord-Holland",
+          city: "Hilversum",
         },
         {
           name: "Nationaal Bomenmuseum Gimborn",
@@ -1162,6 +1171,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amsterdam",
         },
         {
           name: "Stadstuin Emma's Hof",
@@ -1214,6 +1224,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Hoofddorp",
         },
         {
           name: "De Vijvertuinen van Ada Hofman",
@@ -1240,6 +1251,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Bloemendaal",
         },
         {
           name: "Dr. J. P. Thijssepark",
@@ -1255,6 +1267,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amstelveen",
         },
         {
           name: "De Tuinen in Demen",
@@ -1452,6 +1465,7 @@
           category: "Zoo Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amsterdam",
         },
         {
           name: "Beeldentuin de Zanderij",
@@ -1465,6 +1479,7 @@
           category: "Art & Sculpture Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "'s-Graveland",
         },
         {
           name: "Beeldentuin Mariënheem",
@@ -1543,6 +1558,7 @@
           category: "Tulip Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Limmen",
         },
         {
           name: "Poldertuin",
@@ -1569,6 +1585,7 @@
           category: "Tulip Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Noordwijkerhout",
         },
         {
           name: "Keukenhof Garden",
@@ -1583,6 +1600,7 @@
           category: "Tulip Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Lisse",
         },
         {
           name: "Rosenhaege",
@@ -1639,6 +1657,7 @@
           category: "Show Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Enkhuizen",
         },
         {
           name: "Kruidenhof te Mallum",
@@ -1667,6 +1686,7 @@
           category: "Show Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Amsterdam",
         },
         {
           name: "Máximapark",
@@ -1695,6 +1715,7 @@
           category: "Tea Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "'s-Graveland",
         },
         {
           name: "De Kloostergaarde",
@@ -1760,6 +1781,7 @@
           category: "Tea Gardens",
           featured: false,
           province: "Noord-Holland",
+          city: "Weesp",
         },
         {
           name: "Middellandse Zeetuin",
