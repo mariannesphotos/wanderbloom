@@ -115,7 +115,7 @@
         margin-top: 2px;
       }
       .stat-made-by {
-        font-size: 0.6rem;
+        font-size: 0.72rem;
         letter-spacing: 1.2px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.45);
@@ -835,7 +835,6 @@
         gap: 16px;
         overflow-x: auto;
         padding-bottom: 16px;
-        padding-right: 16px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         cursor: grab;
@@ -1259,8 +1258,8 @@
         background: rgba(255, 255, 255, 0.2);
         border: none;
         color: #fff;
-        width: 30px;
-        height: 30px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
         cursor: pointer;
         font-size: 1rem;
@@ -1688,7 +1687,7 @@
           gap: 14px;
         }
         .featured-card {
-          flex: 0 0 82vw;
+          flex: 0 0 78vw;
         }
         .sheet-gallery {
           height: 240px;
@@ -1817,7 +1816,7 @@
         letter-spacing: 0.3px;
       }
       .about-portrait-bio {
-        font-size: 0.88rem;
+        font-size: 0.93rem;
         color: var(--mid);
         line-height: 1.72;
       }
@@ -1839,8 +1838,8 @@
         margin-top: 12px;
       }
       .scroll-dot {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: var(--sage-light);
         cursor: pointer;
