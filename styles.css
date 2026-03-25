@@ -1080,6 +1080,17 @@
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.9);
       }
+      .gc-city-label {
+        font-size: 0.62rem;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .gc-city-label::before {
+        content: "·";
+        margin-right: 7px;
+        color: rgba(255, 255, 255, 0.4);
+      }
       .gc-name {
         font-family: "Playfair Display", serif;
         font-size: 1rem;
