@@ -2500,6 +2500,10 @@
           const lineH = 88;
           const nameBlockH = lines.length * lineH;
           const bottomZoneTop = H - 280;
+
+          // Terracotta accent line above name
+          ctx.fillStyle = "#c4785a";
+          ctx.fillRect(pad, bottomZoneTop - nameBlockH - 52, 80, 3);
           let nameY = bottomZoneTop - nameBlockH - 28;
           for (const l of lines) {
             ctx.fillText(l, pad, nameY);
