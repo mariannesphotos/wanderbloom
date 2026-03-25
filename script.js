@@ -626,6 +626,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Den Haag",
         },
         {
           name: "Binnentuin Stadhuis",
@@ -639,6 +640,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Rotterdam",
         },
         {
           name: "Kasteel Groeneveld",
@@ -801,6 +803,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Den Haag",
         },
         {
           name: "Kasteel Huis Bergh",
@@ -1186,6 +1189,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Den Haag",
         },
         {
           name: "Heemtuin De Meulenwerf",
@@ -1451,6 +1455,7 @@
           category: "Zoo Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Rotterdam",
         },
         {
           name: "Artis",
@@ -1809,6 +1814,7 @@
           category: "World Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Den Haag",
         },
         {
           name: "Mondo Verde",
