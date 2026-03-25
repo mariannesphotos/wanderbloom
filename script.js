@@ -1843,6 +1843,20 @@
         "Show Gardens": "#d4b54a",
         "World Gardens": "#5a8ab5",
       };
+      const CAT_DARK_COLORS = {
+        "Botanical Gardens":       "#1f5247",
+        "Historical Gardens":      "#3d4f6b",
+        "Tree Gardens":            "#3f6030",
+        "Butterfly Gardens":       "#6f507f",
+        "Native Plant Gardens":    "#5f7030",
+        "Private Gardens":         "#7a4a26",
+        "Zoo Gardens":             "#3a7a82",
+        "Art & Sculpture Gardens": "#4a4a4a",
+        "Tulip Gardens":           "#8f5470",
+        "Tea Gardens":             "#5f453a",
+        "Show Gardens":            "#6b5e3a",
+        "World Gardens":           "#3a6088",
+      };
       const CAT_DESC = {
         "Butterfly Gardens":
           "Gardens with a special focus on butterflies. They can be both outdoors or indoors, so please keep in mind the season!",
@@ -2440,9 +2454,15 @@
         const ctx = canvas.getContext("2d");
         const firstPhoto = (photos && photos.length) ? photos[0] : (g.featured_img || null);
 
+        const darkHex = CAT_DARK_COLORS[g.category] || "#1a2e1c";
+        const r = parseInt(darkHex.slice(1, 3), 16);
+        const grn = parseInt(darkHex.slice(3, 5), 16);
+        const b = parseInt(darkHex.slice(5, 7), 16);
+        const darkRgb = `${r}, ${grn}, ${b}`;
+
         function drawCard(img, iconImg, sprigImg) {
           // Background
-          ctx.fillStyle = "#1a2e1c";
+          ctx.fillStyle = darkHex;
           ctx.fillRect(0, 0, W, H);
 
           if (img) {
@@ -2461,9 +2481,9 @@
 
           // Dark gradient over bottom half
           const grad = ctx.createLinearGradient(0, H * 0.4, 0, H);
-          grad.addColorStop(0, "rgba(20, 38, 22, 0)");
-          grad.addColorStop(0.45, "rgba(20, 38, 22, 0.82)");
-          grad.addColorStop(1, "rgba(20, 38, 22, 0.97)");
+          grad.addColorStop(0, `rgba(${darkRgb}, 0)`);
+          grad.addColorStop(0.45, `rgba(${darkRgb}, 0.82)`);
+          grad.addColorStop(1, `rgba(${darkRgb}, 0.97)`);
           ctx.fillStyle = grad;
           ctx.fillRect(0, 0, W, H);
 
@@ -2476,7 +2496,7 @@
           const badgeH = 52;
           const badgeX = pad;
           const badgeY = 72;
-          ctx.fillStyle = "rgba(20, 38, 22, 0.55)";
+          ctx.fillStyle = `rgba(${darkRgb}, 0.55)`;
           ctx.beginPath();
           ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 26);
           ctx.fill();
