@@ -2513,11 +2513,11 @@
           // Category icon + Category · Province
           ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
           const metaY = nameY + 18;
-          const iconSize = 40;
+          const iconSize = 60;
           let metaX = pad;
           if (iconImg) {
-            ctx.drawImage(iconImg, metaX, metaY - iconSize + 6, iconSize, iconSize);
-            metaX += iconSize + 14;
+            ctx.drawImage(iconImg, metaX, metaY - iconSize + 10, iconSize, iconSize);
+            metaX += iconSize + 16;
           }
           ctx.fillStyle = "#a8c5aa";
           ctx.fillText(`${g.category}  ·  ${g.province}`, metaX, metaY);
