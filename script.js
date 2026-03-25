@@ -2548,8 +2548,8 @@
           ctx.fillText("by @marianne_eggink", pad, H - 118);
 
           // URL
-          ctx.fillStyle = "rgba(168, 197, 170, 0.55)";
-          ctx.font = `300 24px "DM Sans", Arial, sans-serif`;
+          ctx.fillStyle = "#a8c5aa";
+          ctx.font = `300 28px "DM Sans", Arial, sans-serif`;
           ctx.fillText("mariannesphotos.github.io/wanderbloom", pad, H - 72);
 
           // Trigger download
