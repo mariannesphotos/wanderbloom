@@ -2719,7 +2719,6 @@
       buildProvinceDropdown();
       applyFilters();
       initMiniMap();
-    </script>
 
       // Fix tooltip overflow on both browse and map filter bars
       function fixTooltipOverflow(wrapSelector, tooltipSelector) {
