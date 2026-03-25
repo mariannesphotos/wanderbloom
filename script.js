@@ -2475,7 +2475,7 @@
           const badgeH = 52;
           const badgeX = pad;
           const badgeY = 72;
-          ctx.fillStyle = "rgba(20, 38, 22, 0.55)";
+          ctx.fillStyle = "#c4785a";
           ctx.beginPath();
           ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 26);
           ctx.fill();
