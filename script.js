@@ -2429,14 +2429,14 @@
       <div class="photo-gallery sheet-gallery" id="sheetGallery" style="height:300px"></div>
       <div class="sheet-subheader cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">
         ${iconSrc ? `<img class="sheet-subheader-icon" src="${iconSrc}" alt="">` : ""}
-        <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}</div></div>
+        <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}${g.city ? ` · ${g.city}` : ""}</div></div>
         <button class="sheet-close" onclick="closeSheet()">✕</button>
       </div>`;
         } else {
           sheetTop.innerHTML = `
       <div class="sheet-no-photo-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">
         ${iconSrc ? `<img class="sheet-header-icon" src="${iconSrc}" alt="">` : ""}
-        <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}</div></div>
+        <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}${g.city ? ` · ${g.city}` : ""}</div></div>
         <button class="sheet-close" onclick="closeSheet()">✕</button>
       </div>`;
         }
