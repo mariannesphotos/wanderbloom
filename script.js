@@ -2419,7 +2419,7 @@
         document.getElementById("sheetDesc").textContent =
           g.description || g.preview || "No description available yet.";
         document.getElementById("sheetCta").innerHTML = g.description
-          ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Want to visit this garden? Save the card for your bucket list!</button>`
+          ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Save this garden to your bucket list 🌿</button>`
           : "";
         const sheet = document.getElementById("bottomSheet");
         sheet.style.display = "block";
