@@ -2406,9 +2406,9 @@
         }
         let lh = "";
         if (g.reel_link)
-          lh += `<a class="sheet-link reel" href="${g.reel_link}" target="_blank">🎥 ${g.reel_label || "Instagram Reel"}</a>`;
+          lh += `<a class="sheet-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">🎥 ${g.reel_label || "Instagram Reel"}</a>`;
         if (g.visitor_link)
-          lh += `<a class="sheet-link visit" href="${g.visitor_link}" target="_blank">📍 Google Maps</a>`;
+          lh += `<a class="sheet-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`;
         if (!lh)
           lh =
             '<span class="sheet-no-link">Search the name in Google Maps to find it</span>';
@@ -2455,10 +2455,10 @@
                 : "";
               const safeG = JSON.stringify(g).replace(/"/g, "&quot;");
               const rb = g.reel_link
-                ? `<a class="fc-link reel" href="${g.reel_link}" target="_blank">🎥 ${g.reel_label || "Instagram Reel"}</a>`
+                ? `<a class="fc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">🎥 ${g.reel_label || "Instagram Reel"}</a>`
                 : "";
               const vb = g.visitor_link
-                ? `<a class="fc-link visit" href="${g.visitor_link}" target="_blank">📍 Google Maps</a>`
+                ? `<a class="fc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`
                 : "";
               const pc = photos
                 ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
@@ -2586,10 +2586,10 @@
               : "";
             const safeG = JSON.stringify(g).replace(/"/g, "&quot;");
             const rb = g.reel_link
-              ? `<a class="gc-link reel" href="${g.reel_link}" target="_blank">🎥 ${g.reel_label || "Instagram Reel"}</a>`
+              ? `<a class="gc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">🎥 ${g.reel_label || "Instagram Reel"}</a>`
               : "";
             const vb = g.visitor_link
-              ? `<a class="gc-link visit" href="${g.visitor_link}" target="_blank">📍 Google Maps</a>`
+              ? `<a class="gc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`
               : "";
             const lb = rb || vb ? `<div class="gc-links">${rb}${vb}</div>` : "";
             const photos = GARDEN_PHOTOS[g.name];
