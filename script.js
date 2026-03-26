@@ -2637,16 +2637,19 @@
           // Category icon + Category · City · Province
           const metaY = nameY + 18;
           const iconSize = 60;
+          ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
+          const metaAvailW = W - pad * 2 - (iconImg ? iconSize + 16 : 0);
+          const metaText = g.city ? `${g.category}  ·  ${g.city}  ·  ${g.province}` : `${g.category}  ·  ${g.province}`;
+          const twoLines = g.city && ctx.measureText(metaText).width > metaAvailW;
           let metaX = pad;
           if (iconImg) {
-            ctx.drawImage(iconImg, metaX, metaY - iconSize / 2 - 13, iconSize, iconSize);
+            // Center icon on the full text block: 1 line = metaY-13, 2 lines = midpoint between both baselines
+            const iconCenterY = twoLines ? metaY + 9 : metaY - 13;
+            ctx.drawImage(iconImg, metaX, iconCenterY - iconSize / 2, iconSize, iconSize);
             metaX += iconSize + 16;
           }
-          ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
-          const metaAvailW = W - pad - metaX;
-          const metaText = g.city ? `${g.category}  ·  ${g.city}  ·  ${g.province}` : `${g.category}  ·  ${g.province}`;
           ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
-          if (ctx.measureText(metaText).width > metaAvailW && g.city) {
+          if (twoLines) {
             ctx.fillText(g.category, metaX, metaY);
             ctx.fillText(`${g.city}  ·  ${g.province}`, metaX, metaY + 44);
           } else {
