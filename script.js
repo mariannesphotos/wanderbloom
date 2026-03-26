@@ -74,7 +74,8 @@
           has_reel: false,
           category: "Butterfly Gardens",
           featured: false,
-          province: "Utrecht",
+          province: "Gelderland",
+          city: "Tiel",
         },
         {
           name: "Vlindersafari",
@@ -374,6 +375,7 @@
           category: "Botanical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Utrecht",
         },
         {
           name: "Hortus Botanicus Amsterdam",
@@ -457,6 +459,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Utrecht",
         },
         {
           name: "Kasteeltuin Neerijnen",
@@ -538,6 +541,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Utrecht",
         },
         {
           name: "A.Vogel Tuinen",
@@ -633,6 +637,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Oud Zuilen",
         },
         {
           name: "Paleistuin",
@@ -688,6 +693,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Baarn",
         },
         {
           name: "Darwinplantsoen Mien Ruys Tuin",
@@ -775,6 +781,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Woerden",
         },
         {
           name: "Kasteeltuinen Arcen",
@@ -815,6 +822,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Utrecht",
         },
         {
           name: "Westbroekpark",
@@ -1073,6 +1081,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Doorn",
         },
         {
           name: "Landgoed Schovenhorst",
@@ -1764,6 +1773,7 @@
           category: "Show Gardens",
           featured: false,
           province: "Utrecht",
+          city: "Utrecht",
         },
         {
           name: "De Sperwershof",
