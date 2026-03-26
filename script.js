@@ -20,6 +20,7 @@
           category: "Art & Sculpture Gardens",
           featured: false,
           province: "Limburg",
+          city: "Valkenburg",
         },
                 {
           name: "Vlindorado",
@@ -86,7 +87,8 @@
           has_reel: false,
           category: "Butterfly Gardens",
           featured: false,
-          province: "Limburg",
+          province: "Noord-Brabant",
+          city: "Gemert",
         },
         {
           name: "Pantropica",
@@ -301,6 +303,7 @@
           category: "Botanical Gardens",
           featured: false,
           province: "Limburg",
+          city: "Steyl",
         },
         {
           name: "De Tuinen van MergenMetz",
@@ -888,6 +891,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Limburg",
+          city: "Schin op Geul",
         },
         {
           name: "Kasteeltuinen Obbicht",
@@ -1312,7 +1316,8 @@
           has_reel: false,
           category: "Private Gardens",
           featured: false,
-          province: "Limburg",
+          province: "Noord-Brabant",
+          city: "Ravenstein",
         },
         {
           name: "De Houtenhandsche Hof",
@@ -1339,6 +1344,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Limburg",
+          city: "Venlo",
         },
         {
           name: "De Verborgen Tuin",
@@ -1352,6 +1358,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Limburg",
+          city: "Venlo",
         },
         {
           name: "De Levenstuinen van het Groot Hontschoten",
@@ -1870,6 +1877,7 @@
           category: "World Gardens",
           featured: false,
           province: "Limburg",
+          city: "Landgraaf",
         },
       ];
       // Shuffle non-featured gardens on each load, keep featured in original order
