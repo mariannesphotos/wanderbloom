@@ -2654,8 +2654,12 @@
             ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
             ctx.fillText(`${g.city}  ·  ${g.province}`, metaX, metaY + 44);
           } else {
-            ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
-            ctx.fillText(metaText, metaX, metaY);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+            ctx.fillText(g.category, metaX, metaY);
+            const catW = ctx.measureText(g.category).width;
+            const dimText = g.city ? `  ·  ${g.city}  ·  ${g.province}` : `  ·  ${g.province}`;
+            ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
+            ctx.fillText(dimText, metaX + catW, metaY);
           }
 
           // Thin divider
