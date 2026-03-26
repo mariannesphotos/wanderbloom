@@ -62,6 +62,7 @@
           category: "Butterfly Gardens",
           featured: false,
           province: "Zuid-Holland",
+          city: "Leidschendam",
         },
         {
           name: "Vlindertuin De Zindering",
