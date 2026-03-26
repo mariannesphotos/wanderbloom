@@ -2643,7 +2643,7 @@
             ctx.drawImage(iconImg, metaX, metaY - iconSize / 2 - 13, iconSize, iconSize);
             metaX += iconSize + 16;
           }
-          ctx.fillStyle = "#a8c5aa";
+          ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
           ctx.fillText(g.city ? `${g.category}  ·  ${g.city}  ·  ${g.province}` : `${g.category}  ·  ${g.province}`, metaX, metaY);
 
           // Thin divider
