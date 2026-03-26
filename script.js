@@ -1348,6 +1348,7 @@
           category: "Private Gardens",
           featured: false,
           province: "Zeeland",
+          city: "Koudekerke",
         },
         {
           name: "Brookergarden",
@@ -1843,6 +1844,7 @@
           category: "Tea Gardens",
           featured: false,
           province: "Zeeland",
+          city: "Hansweert",
         },
         {
           name: "Theetuin Noot 🌰",
@@ -1870,6 +1872,7 @@
           category: "World Gardens",
           featured: false,
           province: "Zeeland",
+          city: "Grijpskerke",
         },
         {
           name: "Japanse Tuin Clingendael",
