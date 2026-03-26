@@ -146,6 +146,7 @@
           category: "Botanical Gardens",
           featured: false,
           province: "Groningen",
+          city: "Nieuw Beerta",
         },
         {
           name: "Hortus Nijmegen",
@@ -230,6 +231,7 @@
           category: "Botanical Gardens",
           featured: false,
           province: "Groningen",
+          city: "Pieterburen",
         },
         {
           name: "Hortus botanicus Haren",
@@ -354,6 +356,7 @@
           category: "Botanical Gardens",
           featured: false,
           province: "Groningen",
+          city: "Oostwold",
         },
         {
           name: "De Oude Hortus",
@@ -517,6 +520,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Groningen",
+          city: "Groningen",
         },
         {
           name: "Pandhof Sinte Marie",
@@ -557,6 +561,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Groningen",
+          city: "Uithuizen",
         },
         {
           name: "Landgoed de Wiersse",
@@ -1112,6 +1117,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Groningen",
+          city: "Eenrum",
         },
         {
           name: "Arboretum Poort Bulten",
@@ -1665,6 +1671,7 @@
           category: "Show Gardens",
           featured: false,
           province: "Groningen",
+          city: "Vriescheloo",
         },
         {
           name: "Bloemenpark Appeltern",
