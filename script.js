@@ -759,6 +759,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Overijssel",
+          city: "Diepenheim",
         },
         {
           name: "Landgoed Bredius",
@@ -868,6 +869,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Overijssel",
+          city: "Ambt Delden",
         },
         {
           name: "Historische Tuin Aalsmeer",
@@ -1000,6 +1002,7 @@
           category: "Historical Gardens",
           featured: true,
           province: "Overijssel",
+          city: "Markelo",
         },
         {
           name: "Historische Kruidentuin IJsselstein",
@@ -1139,6 +1142,7 @@
           category: "Tree Gardens",
           featured: false,
           province: "Overijssel",
+          city: "De Lutte",
         },
         {
           name: "Pinetum Ter Borgh",
@@ -1787,6 +1791,7 @@
           category: "Tea Gardens",
           featured: false,
           province: "Overijssel",
+          city: "Zenderen",
         },
         {
           name: "Theetuin de Tamarisk",
