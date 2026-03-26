@@ -219,7 +219,8 @@
           has_reel: true,
           category: "Botanical Gardens",
           featured: false,
-          province: "Noord-Brabant",
+          province: "Zuid-Holland",
+          city: "Rotterdam",
         },
         {
           name: "Botanische tuin Domies Toen",
@@ -468,7 +469,7 @@
           has_reel: false,
           category: "Historical Gardens",
           featured: false,
-          province: "Noord-Brabant",
+          province: "Gelderland",
         },
         {
           name: "Kasteel Amerongen",
@@ -730,6 +731,7 @@
           category: "Historical Gardens",
           featured: false,
           province: "Noord-Brabant",
+          city: "Breda",
         },
         {
           name: "Dekema State",
@@ -797,7 +799,8 @@
           has_reel: false,
           category: "Historical Gardens",
           featured: false,
-          province: "Noord-Brabant",
+          province: "Zuid-Holland",
+          city: "Rotterdam",
         },
         {
           name: "Kasteel de Haar",
@@ -1233,6 +1236,7 @@
           category: "Native Plant Gardens",
           featured: false,
           province: "Noord-Brabant",
+          city: "Heusden",
         },
         {
           name: "Natuurtuin Harderwijk",
@@ -1581,6 +1585,7 @@
           category: "Art & Sculpture Gardens",
           featured: false,
           province: "Noord-Brabant",
+          city: "Breda",
         },
         {
           name: "Singer Laren",
