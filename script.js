@@ -2634,8 +2634,7 @@
             nameY += lineH;
           }
 
-          // Category icon + Category · Province
-          ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
+          // Category icon + Category · City · Province
           const metaY = nameY + 18;
           const iconSize = 60;
           let metaX = pad;
@@ -2643,8 +2642,16 @@
             ctx.drawImage(iconImg, metaX, metaY - iconSize / 2 - 13, iconSize, iconSize);
             metaX += iconSize + 16;
           }
+          ctx.font = `400 36px "DM Sans", Arial, sans-serif`;
+          const metaAvailW = W - pad - metaX;
+          const metaText = g.city ? `${g.category}  ·  ${g.city}  ·  ${g.province}` : `${g.category}  ·  ${g.province}`;
           ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
-          ctx.fillText(g.city ? `${g.category}  ·  ${g.city}  ·  ${g.province}` : `${g.category}  ·  ${g.province}`, metaX, metaY);
+          if (ctx.measureText(metaText).width > metaAvailW && g.city) {
+            ctx.fillText(g.category, metaX, metaY);
+            ctx.fillText(`${g.city}  ·  ${g.province}`, metaX, metaY + 44);
+          } else {
+            ctx.fillText(metaText, metaX, metaY);
+          }
 
           // Thin divider
           ctx.strokeStyle = "#c4785a";
