@@ -2648,11 +2648,13 @@
             ctx.drawImage(iconImg, metaX, iconCenterY - iconSize / 2, iconSize, iconSize);
             metaX += iconSize + 16;
           }
-          ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
           if (twoLines) {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
             ctx.fillText(g.category, metaX, metaY);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
             ctx.fillText(`${g.city}  ·  ${g.province}`, metaX, metaY + 44);
           } else {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
             ctx.fillText(metaText, metaX, metaY);
           }
 
