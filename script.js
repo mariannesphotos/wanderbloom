@@ -2975,7 +2975,7 @@
           return;
         }
         document
-          .querySelectorAll(".filter-btn")
+          .querySelectorAll(".filter-btn:not(.reel-filter)")
           .forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
         currentFilter = btn.dataset.cat;
