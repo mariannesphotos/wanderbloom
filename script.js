@@ -2436,7 +2436,7 @@
     <div class="photo-slides" id="${containerId}-slides">
       ${photos.map((p) => `<div class="photo-slide" style="height:${h}px"><img src="${p}" alt="" loading="lazy"></div>`).join("")}
     </div>
-    ${photos.length > 1 ? `<div class="photo-dots">${photos.map((_, i) => `<div class="photo-dot-g ${i === 0 ? "active" : ""}" onclick="galleryGoTo('${containerId}',${i})"></div>`).join("")}</div><div class="photo-count">1 / ${photos.length}</div>` : ""}`;
+    ${photos.length > 1 ? `<div class="photo-dots">${photos.map((_, i) => `<div class="photo-dot-g ${i === 0 ? "active" : ""}" onclick="galleryGoTo('${containerId}',${i})"></div>`).join("")}</div><div class="photo-count">1 / ${photos.length}</div><button class="gallery-arrow gallery-arrow-left" id="${containerId}-arrowL" onclick="galleryInstances['${containerId}'].goTo(galleryInstances['${containerId}'].cur-1)">&#8249;</button><button class="gallery-arrow gallery-arrow-right" id="${containerId}-arrowR" onclick="galleryInstances['${containerId}'].goTo(galleryInstances['${containerId}'].cur+1)">&#8250;</button>` : ""}`;
         let cur = 0;
         galleryInstances[containerId] = {
           cur,
@@ -2448,10 +2448,14 @@
             const bg = document.getElementById(containerId + "-bg");
             const cnt = container.querySelector(".photo-count");
             const dots = container.querySelectorAll(".photo-dot-g");
+            const arrowL = document.getElementById(containerId + "-arrowL");
+            const arrowR = document.getElementById(containerId + "-arrowR");
             if (s) s.style.transform = `translateX(-${idx * 100}%)`;
             if (bg) bg.style.backgroundImage = `url(${photos[idx]})`;
             if (cnt) cnt.textContent = `${idx + 1} / ${photos.length}`;
             dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+            if (arrowL) arrowL.style.opacity = idx === 0 ? "0" : "1";
+            if (arrowR) arrowR.style.opacity = idx === photos.length - 1 ? "0" : "1";
           },
         };
         let sx = null;
