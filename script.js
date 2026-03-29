@@ -2319,6 +2319,7 @@
           dragging: true,
           doubleClickZoom: true,
           touchZoom: true,
+          gestureHandling: true,
           attributionControl: false,
           zoomSnap: 0.1,
         }).setView([52.25, 5.3], 6.8);
