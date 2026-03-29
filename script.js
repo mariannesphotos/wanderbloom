@@ -2817,8 +2817,6 @@
           );
           // Scroll listener - update dots, loop back to start
           let isJumping = false;
-          let userScrolling = false;
-          let userScrollTimer = null;
           scroll.addEventListener("scroll", () => {
             if (isJumping) return;
             const pos = scroll.scrollLeft;
@@ -2831,11 +2829,6 @@
                   j === Math.min(cur, reachable - 1),
                 ),
               );
-            if (false) {
-              isJumping = true;
-              scroll.scrollTo({ left: 0, behavior: "instant" });
-              setTimeout(() => (isJumping = false), 100);
-            }
           });
           // Autoscroll
           let autoTimer = setInterval(advance, 3500);
