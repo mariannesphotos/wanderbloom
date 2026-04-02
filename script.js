@@ -2456,8 +2456,8 @@
             if (bg) bg.style.backgroundImage = `url(${photos[idx]})`;
             if (cnt) cnt.textContent = `${idx + 1} / ${photos.length}`;
             dots.forEach((d, i) => d.classList.toggle("active", i === idx));
-            if (arrowL) arrowL.style.opacity = idx === 0 ? "0" : "1";
-            if (arrowR) arrowR.style.opacity = idx === photos.length - 1 ? "0" : "1";
+            if (arrowL) { arrowL.style.opacity = idx === 0 ? "0" : "1"; arrowL.style.pointerEvents = idx === 0 ? "none" : "auto"; }
+            if (arrowR) { arrowR.style.opacity = idx === photos.length - 1 ? "0" : "1"; arrowR.style.pointerEvents = idx === photos.length - 1 ? "none" : "auto"; }
           },
         };
         let sx = null;
