@@ -2435,7 +2435,7 @@
         container.innerHTML = `
     <div class="photo-blur-bg" id="${containerId}-bg" style="background-image:url(${photos[0]})"></div>
     <div class="photo-slides" id="${containerId}-slides">
-      ${photos.map((p) => `<div class="photo-slide" style="height:${h}px"><img src="${p}" alt="" loading="lazy"></div>`).join("")}
+      ${photos.map((p) => `<div class="photo-slide" style="height:${h}px"><img src="${p}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='#2a2a2a';this.parentElement.innerHTML+='<span style=\\'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2rem;opacity:0.3\\'>🌿</span>'"></div>`).join("")}
     </div>
     ${photos.length > 1 ? `<div class="photo-dots">${photos.map((_, i) => `<div class="photo-dot-g ${i === 0 ? "active" : ""}" onclick="galleryGoTo('${containerId}',${i})"></div>`).join("")}</div><div class="photo-count">1 / ${photos.length}</div><button class="gallery-arrow gallery-arrow-left" id="${containerId}-arrowL" onclick="galleryInstances['${containerId}'].goTo(galleryInstances['${containerId}'].cur-1)">&#8249;</button><button class="gallery-arrow gallery-arrow-right" id="${containerId}-arrowR" onclick="galleryInstances['${containerId}'].goTo(galleryInstances['${containerId}'].cur+1)">&#8250;</button>` : ""}`;
         let cur = 0;
@@ -2540,7 +2540,7 @@
         window._sheetGarden = g;
         window._sheetPhotos = photos;
         document.getElementById("sheetDesc").textContent =
-          g.description || g.preview || "No description available yet.";
+          g.description || g.preview || "";
         document.getElementById("sheetCta").innerHTML = g.description
           ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Save this garden to your bucket list 🌿</button>`
           : "";
