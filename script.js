@@ -2443,6 +2443,7 @@
           cur,
           photos,
           goTo: (idx) => {
+            idx = Math.max(0, Math.min(idx, photos.length - 1));
             cur = idx;
             galleryInstances[containerId].cur = idx;
             const s = document.getElementById(containerId + "-slides");
