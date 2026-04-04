@@ -993,7 +993,7 @@
           visitor_link: "https://maps.app.goo.gl/izU3hGXmtbdsK6ou5",
           has_reel: true,
           category: "Historical Gardens",
-          featured: false,
+          featured: true,
           province: "Noord-Holland",
           city: "'s-Graveland",
         },
