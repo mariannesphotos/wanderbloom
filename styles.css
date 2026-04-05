@@ -1661,7 +1661,7 @@
         background: var(--sage-dark);
         color: rgba(255, 255, 255, 0.62);
         text-align: center;
-        padding: 26px 24px;
+        padding: 26px 24px calc(26px + env(safe-area-inset-bottom, 0px));
         font-size: 0.79rem;
         line-height: 1.75;
       }
