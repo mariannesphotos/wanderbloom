@@ -2205,7 +2205,7 @@
   mPS.id = "mapProvinceSelect";
   const defOpt = document.createElement("option");
   defOpt.value = "all";
-  defOpt.textContent = "🌍 All provinces";
+  defOpt.textContent = "🌍 Province";
   mPS.appendChild(defOpt);
   ALL_PROVINCES.forEach((p) => {
     const count = GARDENS.filter((g) => g.province === p).length;

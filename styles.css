@@ -1748,15 +1748,8 @@
         .filters-row {
           align-items: flex-start;
         }
-        .province-select-wrap {
-          width: 100%;
-        }
-        .province-select-wrap .filter-btn-wrap {
-          width: 100%;
-        }
         #provinceSelect,
         #distanceSelect {
-          flex: 1;
           min-width: 0;
         }
         .hero-social-icons {
