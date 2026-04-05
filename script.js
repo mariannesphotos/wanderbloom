@@ -2517,6 +2517,8 @@
         url.searchParams.set("garden", slug);
         history.pushState({ garden: slug }, "", url.toString());
         document.title = `${g.name} — Wander & Bloom`;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', `${g.category}${g.city ? ` · ${g.city}` : ''} · Photography garden map of the Netherlands`);
         const photos = GARDEN_PHOTOS[g.name] || null;
         const iconSrc = ICONS[g.category] || "";
         const reelBadge = "";
@@ -2766,6 +2768,8 @@
           history.pushState({}, "", url.toString());
         }
         document.title = "Wander & Bloom — Photography Garden Map Netherlands";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', 'Free photography garden map of the Netherlands — more than 100 gardens for wandering, nature lovers, and photographers. Find gardens by category and province.');
       }
 
       function shareGarden() {
