@@ -772,9 +772,15 @@
         position: relative;
         flex-shrink: 0;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 6px;
         align-items: center;
+        min-width: 0;
+      }
+      #provinceSelect,
+      #distanceSelect {
+        min-width: 0;
+        width: auto;
       }
       .province-select {
         appearance: none;
