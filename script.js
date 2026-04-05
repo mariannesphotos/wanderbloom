@@ -2376,6 +2376,7 @@
         });
       }
       let fullMap, markersLayer;
+      let featuredAutoTimer = null, featuredUserScrollTimer = null;
       function initFullMap() {
         fullMap = L.map("fullMap").setView([52.25, 5.3], 7);
         L.tileLayer(
@@ -2925,22 +2926,23 @@
                 ),
               );
           });
-          // Autoscroll
-          let autoTimer = setInterval(advance, 3500);
+          // Autoscroll — clear any previous interval first
+          clearInterval(featuredAutoTimer);
+          clearTimeout(featuredUserScrollTimer);
           function advance() {
             const cur = Math.round(scroll.scrollLeft / cardW);
             const next = cur + 1 >= reachable ? 0 : cur + 1;
-            scroll.scrollTo({ left: targetFor(next), behavior: "smooth" });
+            const behavior = next === 0 ? "instant" : "smooth";
+            scroll.scrollTo({ left: targetFor(next), behavior });
           }
+          featuredAutoTimer = setInterval(advance, 3500);
           function pauseAuto() {
-            userScrolling = true;
-            clearInterval(autoTimer);
-            clearTimeout(userScrollTimer);
+            clearInterval(featuredAutoTimer);
+            clearTimeout(featuredUserScrollTimer);
           }
           function resumeAuto() {
-            userScrollTimer = setTimeout(() => {
-              userScrolling = false;
-              autoTimer = setInterval(advance, 3500);
+            featuredUserScrollTimer = setTimeout(() => {
+              featuredAutoTimer = setInterval(advance, 3500);
             }, 2000);
           }
           scroll.addEventListener("mouseenter", () => pauseAuto());
