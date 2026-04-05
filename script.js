@@ -2507,7 +2507,15 @@
       }
 
       // Bottom sheet
+      function gardenSlug(name) {
+        return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      }
+
       function openSheet(g) {
+        const slug = gardenSlug(g.name);
+        const url = new URL(window.location.href);
+        url.searchParams.set("garden", slug);
+        history.pushState({ garden: slug }, "", url.toString());
         const photos = GARDEN_PHOTOS[g.name] || null;
         const iconSrc = ICONS[g.category] || "";
         const reelBadge = "";
@@ -2750,6 +2758,11 @@
           document.getElementById("backdrop").classList.remove("open");
           document.body.style.overflow = "";
         }, 230);
+        const url = new URL(window.location.href);
+        if (url.searchParams.has("garden")) {
+          url.searchParams.delete("garden");
+          history.pushState({}, "", url.toString());
+        }
       }
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeSheet();
@@ -3165,5 +3178,31 @@
               } catch (err) {}
             }
           });
+        });
+
+        // Deep link: open garden from ?garden= param on page load
+        const deepSlug = new URLSearchParams(window.location.search).get("garden");
+        if (deepSlug) {
+          const match = GARDENS.find(g => gardenSlug(g.name) === deepSlug);
+          if (match) openSheet(match);
+        }
+
+        // Handle browser back/forward
+        window.addEventListener("popstate", () => {
+          const slug = new URLSearchParams(window.location.search).get("garden");
+          if (slug) {
+            const match = GARDENS.find(g => gardenSlug(g.name) === slug);
+            if (match) openSheet(match);
+          } else {
+            const sheet = document.getElementById("bottomSheet");
+            if (sheet.style.display !== "none") {
+              sheet.style.animation = "slideDown .25s ease";
+              setTimeout(() => {
+                sheet.style.display = "none";
+                document.getElementById("backdrop").classList.remove("open");
+                document.body.style.overflow = "";
+              }, 230);
+            }
+          }
         });
       });
