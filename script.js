@@ -2545,6 +2545,7 @@
           lh =
             '<span class="sheet-no-link">Search the name in Google Maps to find it</span>';
         lh += `<button class="sheet-link save" onclick="generateSaveCard()">🖼️ Save card</button>`;
+        lh += `<button class="sheet-link share" onclick="shareGarden()">🔗 Share</button>`;
         document.getElementById("sheetLinks").innerHTML = lh;
         window._sheetGarden = g;
         window._sheetPhotos = photos;
@@ -2762,6 +2763,26 @@
         if (url.searchParams.has("garden")) {
           url.searchParams.delete("garden");
           history.pushState({}, "", url.toString());
+        }
+      }
+
+      function shareGarden() {
+        const g = window._sheetGarden;
+        if (!g) return;
+        const url = new URL(window.location.href);
+        url.searchParams.set("garden", gardenSlug(g.name));
+        const shareUrl = url.toString();
+        if (navigator.share) {
+          navigator.share({ title: g.name, text: g.city ? `${g.name} · ${g.city}` : g.name, url: shareUrl });
+        } else {
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            const btn = document.querySelector(".sheet-link.share");
+            if (btn) {
+              const orig = btn.textContent;
+              btn.textContent = "✓ Copied!";
+              setTimeout(() => { btn.textContent = orig; }, 2000);
+            }
+          });
         }
       }
       document.addEventListener("keydown", (e) => {

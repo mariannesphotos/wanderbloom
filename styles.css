@@ -1431,6 +1431,12 @@
         color: var(--sage-dark);
         border: 1.5px solid var(--border);
       }
+      .sheet-link.share {
+        background: transparent;
+        color: var(--sage-dark);
+        border: 1.5px solid var(--sage-dark);
+        cursor: pointer;
+      }
       .sheet-link.save {
         background: var(--sage-dark);
         color: #fff;
