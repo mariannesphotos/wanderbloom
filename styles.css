@@ -1750,12 +1750,16 @@
       }
       @media (max-width: 480px) {
         .tab-btn {
-          padding: 11px 8px;
+          padding: 11px 6px;
           font-size: 0.78rem;
+        }
+        .tabs-inner {
+          padding: 0 8px;
+          overflow-x: auto;
         }
         .tabs-bar {
           overflow-x: visible;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
         }
         .hero-stats {
           gap: 14px;
