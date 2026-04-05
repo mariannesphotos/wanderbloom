@@ -772,15 +772,9 @@
         position: relative;
         flex-shrink: 0;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         gap: 6px;
         align-items: center;
-        min-width: 0;
-      }
-      #provinceSelect,
-      #distanceSelect {
-        min-width: 0;
-        width: auto;
       }
       .province-select {
         appearance: none;
@@ -1754,8 +1748,15 @@
         .filters-row {
           align-items: flex-start;
         }
+        .province-select-wrap {
+          width: 100%;
+        }
+        .province-select-wrap .filter-btn-wrap {
+          width: 100%;
+        }
         #provinceSelect,
         #distanceSelect {
+          flex: 1;
           min-width: 0;
         }
         .hero-social-icons {
