@@ -2222,6 +2222,48 @@
   mPW.appendChild(mPS);
   mapBar.appendChild(mPW);
 
+  // MAP: Near me dropdown
+  const mDW = document.createElement("div");
+  mDW.style.cssText = "flex-shrink:0;";
+  const mDS = document.createElement("select");
+  mDS.className = "province-select";
+  mDS.id = "mapDistanceSelect";
+  [["all", "📍 Near me"], ["25", "Within 25 km"], ["50", "Within 50 km"], ["100", "Within 100 km"]].forEach(([val, txt]) => {
+    const o = document.createElement("option");
+    o.value = val; o.textContent = txt;
+    mDS.appendChild(o);
+  });
+  mDS.addEventListener("change", () => {
+    const val = mDS.value;
+    if (val === "all") {
+      currentMapDistance = "all";
+      mDS.classList.remove("active");
+      renderMapMarkers(currentMapCat);
+      return;
+    }
+    if (userLocation) {
+      currentMapDistance = val;
+      mDS.classList.add("active");
+      renderMapMarkers(currentMapCat);
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        currentMapDistance = val;
+        mDS.classList.add("active");
+        renderMapMarkers(currentMapCat);
+      },
+      function () {
+        mDS.value = "all";
+        currentMapDistance = "all";
+        mDS.classList.remove("active");
+      }
+    );
+  });
+  mDW.appendChild(mDS);
+  mapBar.appendChild(mDW);
+
   // MAP: Visual separator
   const sep = document.createElement("div");
   sep.style.cssText = "width:1px;height:20px;background:rgba(255,255,255,0.2);flex-shrink:0;margin:0 4px;";
@@ -2423,7 +2465,8 @@
       }
       let currentMapCat = "all",
         currentMapProvince = "all",
-        currentMapReelFilter = false;
+        currentMapReelFilter = false,
+        currentMapDistance = "all";
       function renderMapMarkers(filter) {
         currentMapCat = filter;
         markersLayer.clearLayers();
@@ -2436,6 +2479,8 @@
         if (currentMapReelFilter) list = list.filter((g) => g.has_reel);
         if (currentMapProvince !== "all")
           list = list.filter((g) => g.province === currentMapProvince);
+        if (currentMapDistance !== "all" && userLocation)
+          list = list.filter((g) => haversineKm(userLocation.lat, userLocation.lng, g.lat, g.lng) <= parseInt(currentMapDistance));
         list.forEach((g) => {
           const sz = g.featured ? 28 : 22;
           const iu = ICONS[g.category];
