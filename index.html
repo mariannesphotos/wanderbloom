@@ -534,7 +534,8 @@
         own and may not be reproduced without permission.</span
       ><br /><br />
       <span style="display: block; font-size: 0.72rem; opacity: 0.55; line-height: 1.5; max-width: 480px; margin: 0 auto; word-wrap: break-word;">
-        This site uses Google Analytics to measure visitor numbers and understand how people use the map. No personal data is collected or sold. You can accept or decline cookies via the notice that appears on your first visit.
+        This site uses Google Analytics to measure visitor numbers and understand how people use the map. No personal data is collected or sold. You can accept or decline cookies via the notice that appears on your first visit. ·
+        <a href="#" id="manageCookies" style="color: inherit; text-decoration: underline;">Manage cookies</a>
       </span>
     </footer>
 
@@ -620,6 +621,27 @@
           document.getElementById('cookieDecline').addEventListener('click', function () {
             localStorage.setItem('ga_consent', 'declined');
             hideCookieBar();
+          });
+        }
+
+        var manageBtn = document.getElementById('manageCookies');
+        if (manageBtn) {
+          manageBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            localStorage.removeItem('ga_consent');
+            var bar = document.getElementById('cookieBar');
+            if (bar) {
+              bar.style.display = 'flex';
+              document.getElementById('cookieAccept').onclick = function () {
+                localStorage.setItem('ga_consent', 'accepted');
+                hideCookieBar();
+                loadGA();
+              };
+              document.getElementById('cookieDecline').onclick = function () {
+                localStorage.setItem('ga_consent', 'declined');
+                hideCookieBar();
+              };
+            }
           });
         }
       })();
