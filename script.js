@@ -2329,6 +2329,23 @@
           { maxZoom: 19 },
         ).addTo(map);
         addNLOutline(map, 0.45);
+        // Locate button for mini map
+        let miniLocateMarker = null;
+        document.getElementById('miniMapLocate').addEventListener('click', function () {
+          map.locate({ setView: true, maxZoom: 12 });
+        });
+        map.on('locationfound', function (e) {
+          if (miniLocateMarker) miniLocateMarker.remove();
+          miniLocateMarker = L.circleMarker(e.latlng, {
+            radius: 7, color: '#2563eb', fillColor: '#3b82f6',
+            fillOpacity: 1, weight: 2
+          }).addTo(map);
+          document.getElementById('miniMapLocate').classList.add('active');
+        });
+        map.on('locationerror', function () {
+          alert('Could not get your location. Please check your browser permissions.');
+        });
+
         GARDENS.forEach((g) => {
           const iu = ICONS[g.category];
           const m = iu
@@ -2370,6 +2387,36 @@
         ).addTo(fullMap);
         addNLOutline(fullMap, 0.15);
         markersLayer = L.layerGroup().addTo(fullMap);
+
+        // Locate control for full map
+        let fullLocateMarker = null;
+        const LocateControl = L.Control.extend({
+          options: { position: 'bottomleft' },
+          onAdd: function () {
+            const btn = L.DomUtil.create('button', 'locate-btn');
+            btn.title = 'Show my location';
+            btn.setAttribute('aria-label', 'Show my location');
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>';
+            L.DomEvent.on(btn, 'click', function (e) {
+              L.DomEvent.stopPropagation(e);
+              fullMap.locate({ setView: true, maxZoom: 13 });
+            });
+            return btn;
+          }
+        });
+        new LocateControl().addTo(fullMap);
+        fullMap.on('locationfound', function (e) {
+          if (fullLocateMarker) fullLocateMarker.remove();
+          fullLocateMarker = L.circleMarker(e.latlng, {
+            radius: 8, color: '#2563eb', fillColor: '#3b82f6',
+            fillOpacity: 1, weight: 2
+          }).addTo(fullMap);
+          document.querySelector('#mapPanel .locate-btn') && document.querySelector('#mapPanel .locate-btn').classList.add('active');
+        });
+        fullMap.on('locationerror', function () {
+          alert('Could not get your location. Please check your browser permissions.');
+        });
+
         renderMapMarkers("all");
       }
       let currentMapCat = "all",

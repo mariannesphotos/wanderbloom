@@ -228,6 +228,30 @@
         font-weight: 500;
         text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
       }
+      .locate-btn {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.92);
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #263829;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        transition: background 0.15s;
+      }
+      .locate-btn:hover {
+        background: #fff;
+      }
+      .locate-btn.active {
+        color: #2563eb;
+      }
       .gmaps-map-btn {
         position: absolute;
         bottom: 10px;

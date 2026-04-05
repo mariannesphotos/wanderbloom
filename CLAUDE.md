@@ -18,6 +18,7 @@ Wander & Bloom is a free photography garden map of the Netherlands. A single-pag
 | `script.js` | All data (GARDENS, GARDEN_PHOTOS) and all logic |
 | `sitemap.xml` | SEO sitemap — must be kept in sync with gardens |
 | `robots.txt` | Points Google to sitemap |
+| `privacy.html` | Privacy policy page — linked from footer |
 
 ---
 
