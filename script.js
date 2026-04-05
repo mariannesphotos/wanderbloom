@@ -2516,6 +2516,7 @@
         const url = new URL(window.location.href);
         url.searchParams.set("garden", slug);
         history.pushState({ garden: slug }, "", url.toString());
+        document.title = `${g.name} — Wander & Bloom`;
         const photos = GARDEN_PHOTOS[g.name] || null;
         const iconSrc = ICONS[g.category] || "";
         const reelBadge = "";
@@ -2764,6 +2765,7 @@
           url.searchParams.delete("garden");
           history.pushState({}, "", url.toString());
         }
+        document.title = "Wander & Bloom — Photography Garden Map Netherlands";
       }
 
       function shareGarden() {
