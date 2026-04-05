@@ -507,6 +507,10 @@
           </div>
         </div>
       </div>
+      <p style="margin-top: 24px; font-size: 0.75rem; opacity: 0.55; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px;">
+        This site uses Google Analytics to measure visitor numbers and understand how people use the map. No personal data is collected or sold. You can accept or decline cookies via the notice that appears on your first visit.
+      </p>
+    </div>
     </div>
 
     <!-- BOTTOM SHEET -->
@@ -540,6 +544,92 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Cookie consent bar -->
+    <div id="cookieBar" style="
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1e3322;
+      color: #f5f0e8;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      padding: 12px 20px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    ">
+      <span style="flex: 1; min-width: 200px; line-height: 1.5;">
+        This site uses Google Analytics to understand visitor behaviour. No personal data is collected or sold.
+      </span>
+      <div style="display: flex; gap: 10px; flex-shrink: 0;">
+        <button id="cookieAccept" style="
+          background: #f5f0e8;
+          color: #1e3322;
+          border: none;
+          padding: 6px 16px;
+          border-radius: 4px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.8rem;
+          font-weight: 500;
+          cursor: pointer;
+        ">Accept</button>
+        <button id="cookieDecline" style="
+          background: transparent;
+          color: #f5f0e8;
+          border: 1px solid rgba(255,255,255,0.4);
+          padding: 6px 16px;
+          border-radius: 4px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.8rem;
+          cursor: pointer;
+        ">Decline</button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var consent = localStorage.getItem('ga_consent');
+
+        function loadGA() {
+          var s1 = document.createElement('script');
+          s1.async = true;
+          s1.src = 'https://www.googletagmanager.com/gtag/js?id=G-5DDCL1W5PB';
+          document.head.appendChild(s1);
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-5DDCL1W5PB', { anonymize_ip: true });
+        }
+
+        function hideCookieBar() {
+          var bar = document.getElementById('cookieBar');
+          if (bar) bar.style.display = 'none';
+        }
+
+        if (consent === 'accepted') {
+          loadGA();
+        } else if (consent === null) {
+          var bar = document.getElementById('cookieBar');
+          if (bar) bar.style.display = 'flex';
+          document.getElementById('cookieAccept').addEventListener('click', function () {
+            localStorage.setItem('ga_consent', 'accepted');
+            hideCookieBar();
+            loadGA();
+          });
+          document.getElementById('cookieDecline').addEventListener('click', function () {
+            localStorage.setItem('ga_consent', 'declined');
+            hideCookieBar();
+          });
+        }
+      })();
+    </script>
 
   </body>
 </html>
