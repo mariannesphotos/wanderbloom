@@ -2341,6 +2341,7 @@
             fillOpacity: 1, weight: 2
           }).addTo(map);
           document.getElementById('miniMapLocate').classList.add('active');
+          userLocation = { lat: e.latlng.lat, lng: e.latlng.lng };
         });
         map.on('locationerror', function () {
           alert('Could not get your location. Please check your browser permissions.');
@@ -3016,7 +3017,50 @@
       let currentFilter = "all",
         currentSearch = "",
         currentProvince = "all",
-        currentReelFilter = false;
+        currentReelFilter = false,
+        currentDistance = "all",
+        userLocation = null;
+
+      function haversineKm(lat1, lng1, lat2, lng2) {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLng = (lng2 - lng1) * Math.PI / 180;
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      }
+
+      function initDistanceFilter() {
+        const sel = document.getElementById('distanceSelect');
+        sel.addEventListener('change', function () {
+          const val = sel.value;
+          if (val === 'all') {
+            currentDistance = 'all';
+            sel.classList.remove('active');
+            applyFilters();
+            return;
+          }
+          if (userLocation) {
+            currentDistance = val;
+            sel.classList.add('active');
+            applyFilters();
+            return;
+          }
+          navigator.geolocation.getCurrentPosition(
+            function (pos) {
+              userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+              currentDistance = val;
+              sel.classList.add('active');
+              applyFilters();
+            },
+            function () {
+              // Permission denied — reset silently
+              sel.value = 'all';
+              currentDistance = 'all';
+              sel.classList.remove('active');
+            }
+          );
+        });
+      }
       let miniMapMarkers = [];
       function updateMiniMapFilter(list) {
         if (!miniMapMarkers.length) return;
@@ -3035,6 +3079,8 @@
         if (currentReelFilter) list = list.filter((g) => g.has_reel);
         if (currentProvince !== "all")
           list = list.filter((g) => g.province === currentProvince);
+        if (currentDistance !== "all" && userLocation)
+          list = list.filter((g) => haversineKm(userLocation.lat, userLocation.lng, g.lat, g.lng) <= parseInt(currentDistance));
         if (q)
           list = list.filter(
             (g) =>
@@ -3120,6 +3166,7 @@
       // INIT
       buildFilterButtons();
       buildProvinceDropdown();
+      initDistanceFilter();
       applyFilters();
       initMiniMap();
 
