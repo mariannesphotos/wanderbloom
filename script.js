@@ -2466,6 +2466,7 @@
       let currentMapCat = "all",
         currentMapProvince = "all",
         currentMapReelFilter = false,
+        currentMapSavedFilter = false,
         currentMapDistance = "all";
       function renderMapMarkers(filter) {
         currentMapCat = filter;
@@ -2477,6 +2478,7 @@
               ? GARDENS.filter((g) => g.has_reel)
               : GARDENS.filter((g) => g.category === filter);
         if (currentMapReelFilter) list = list.filter((g) => g.has_reel);
+        if (currentMapSavedFilter) list = list.filter((g) => savedGardens.has(g.name));
         if (currentMapProvince !== "all")
           list = list.filter((g) => g.province === currentMapProvince);
         if (currentMapDistance !== "all" && userLocation)
@@ -3163,6 +3165,35 @@
             document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
           }
           wrap.remove();
+        }
+
+        // Map bar saved button
+        const mapBar = document.getElementById('mapFilterBar');
+        let mapSavedWrap = mapBar.querySelector('.map-saved-wrap');
+        if (savedGardens.size > 0) {
+          if (!mapSavedWrap) {
+            mapSavedWrap = document.createElement('div');
+            mapSavedWrap.className = 'map-filter-wrap map-saved-wrap';
+            const mapSavedBtn = document.createElement('button');
+            mapSavedBtn.className = 'map-filter-btn';
+            mapSavedBtn.textContent = '❤️ Saved';
+            mapSavedBtn.addEventListener('click', () => {
+              if (mapSavedBtn.classList.contains('active')) {
+                mapSavedBtn.classList.remove('active');
+                currentMapSavedFilter = false;
+              } else {
+                mapSavedBtn.classList.add('active');
+                currentMapSavedFilter = true;
+              }
+              renderMapMarkers(currentMapCat);
+            });
+            mapSavedWrap.appendChild(mapSavedBtn);
+            // Insert after the reel wrap (first child of mapBar)
+            mapBar.insertBefore(mapSavedWrap, mapBar.children[1]);
+          }
+        } else if (mapSavedWrap) {
+          currentMapSavedFilter = false;
+          mapSavedWrap.remove();
         }
       }
 
