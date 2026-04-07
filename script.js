@@ -2659,6 +2659,7 @@
       <div class="sheet-subheader cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">
         ${iconSrc ? `<img class="sheet-subheader-icon" src="${iconSrc}" alt="">` : ""}
         <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}${g.city ? ` · <span style="white-space:nowrap">${g.city}</span>` : ""}</div></div>
+        <button class="sheet-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name);this.classList.toggle('saved',savedGardens.has(window._sheetGarden.name));">♥</button>
         <button class="sheet-close" onclick="closeSheet()">✕</button>
       </div>`;
         } else {
@@ -2666,6 +2667,7 @@
       <div class="sheet-no-photo-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">
         ${iconSrc ? `<img class="sheet-header-icon" src="${iconSrc}" alt="">` : ""}
         <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}${g.city ? ` · <span style="white-space:nowrap">${g.city}</span>` : ""}</div></div>
+        <button class="sheet-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name);this.classList.toggle('saved',savedGardens.has(window._sheetGarden.name));">♥</button>
         <button class="sheet-close" onclick="closeSheet()">✕</button>
       </div>`;
         }
@@ -2970,10 +2972,8 @@
               const pc = photos
                 ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
                 : "";
-              const heartCls = savedGardens.has(g.name) ? ' saved' : '';
-              const safeHeart = g.name.replace(/"/g, '&quot;');
               return `<article class="featured-card" data-garden="${safeG}">
-      <div class="fc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="fc-name" style="padding-right:${photos ? "70px" : "28px"}">${g.name}</div><div class="fc-header-top">${ih}<div class="gc-cat-city"><span class="fc-cat">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div><button class="heart-btn${heartCls}" data-heart="${safeHeart}" aria-label="Save garden">♥</button></div>
+      <div class="fc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="fc-name" style="padding-right:${photos ? "70px" : "28px"}">${g.name}</div><div class="fc-header-top">${ih}<div class="gc-cat-city"><span class="fc-cat">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div></div>
       ${rb || vb ? `<div class="fc-links">${rb}${vb}</div>` : ""}
       <div class="fc-body">${g.preview ? `<p class="fc-desc">${g.preview}</p>` : ""}<span class="fc-hint">Tap to read more →</span></div>
     </article>`;
@@ -3103,10 +3103,8 @@
             const pc = photos
               ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
               : "";
-            const heartCls = savedGardens.has(g.name) ? ' saved' : '';
-            const safeHeart = g.name.replace(/"/g, '&quot;');
             return `<article class="garden-card" data-garden="${safeG}">
-    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div><button class="heart-btn${heartCls}" data-heart="${safeHeart}" aria-label="Save garden">♥</button></div>
+    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div></div>
       ${lb}
       ${g.preview ? `<div class="gc-body"><p class="gc-preview">${g.preview}</p></div>` : ""}
     </article>`;
@@ -3499,9 +3497,6 @@
           const el = document.getElementById(id);
           if (!el) return;
           el.addEventListener("click", (e) => {
-            // If heart was clicked, toggle saved
-            const heart = e.target.closest(".heart-btn");
-            if (heart) { e.stopPropagation(); toggleSaved(heart.dataset.heart); return; }
             // If a link button was clicked, let the browser follow it, don't open sheet
             const link = e.target.closest(".gc-link, .fc-link");
             if (link) return;

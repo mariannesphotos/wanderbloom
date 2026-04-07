@@ -1345,6 +1345,26 @@
       .sheet-close:hover {
         background: rgba(255, 255, 255, 0.32);
       }
+      .sheet-heart {
+        position: absolute;
+        top: 14px;
+        right: 66px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: rgba(255, 255, 255, 0.7);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s, color 0.15s;
+      }
+      .sheet-heart:hover { background: rgba(255, 255, 255, 0.32); color: #fff; }
+      .sheet-heart.saved { color: #e87070; background: rgba(255, 255, 255, 0.25); }
+      .sheet-subheader .sheet-heart { top: 10px; }
       .sheet-reel-badge {
         display: inline-block;
         background: var(--terracotta);
