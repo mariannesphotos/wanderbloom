@@ -3162,7 +3162,7 @@
             const firstSelect = utilRow.querySelector('select');
             utilRow.insertBefore(wrap, firstSelect);
           }
-          wrap.querySelector('.saved-filter').textContent = `🤍 Saved (${savedGardens.size})`;
+          wrap.querySelector('.saved-filter').textContent = `❤️ Saved (${savedGardens.size})`;
           if (currentFilter === 'saved') wrap.querySelector('.saved-filter').classList.add('active');
         } else if (wrap) {
           if (currentFilter === 'saved') {
