@@ -2418,7 +2418,7 @@
         });
       }
       let fullMap, markersLayer;
-      let featuredAutoTimer = null, featuredUserScrollTimer = null;
+      let featuredAutoTimer = null, featuredUserScrollTimer = null, featuredScrollController = null;
       function initFullMap() {
         fullMap = L.map("fullMap").setView([52.25, 5.3], 7);
         L.tileLayer(
@@ -2947,6 +2947,9 @@
 
       // Featured
       function renderFeatured(list) {
+        if (featuredScrollController) featuredScrollController.abort();
+        featuredScrollController = new AbortController();
+        const { signal } = featuredScrollController;
         const section = document.getElementById("featuredSection");
         const scroll = document.getElementById("featuredScroll");
         const featured = list.filter((g) => g.featured);
@@ -3026,7 +3029,7 @@
                   j === Math.min(cur, reachable - 1),
                 ),
               );
-          });
+          }, { signal });
           // Autoscroll — clear any previous interval first
           clearInterval(featuredAutoTimer);
           clearTimeout(featuredUserScrollTimer);
@@ -3046,33 +3049,23 @@
               featuredAutoTimer = setInterval(advance, 3500);
             }, 2000);
           }
-          scroll.addEventListener("mouseenter", () => pauseAuto());
-          scroll.addEventListener("mouseleave", () => resumeAuto());
-          scroll.addEventListener("touchstart", () => pauseAuto(), {
-            passive: true,
-          });
-          scroll.addEventListener("touchend", () => resumeAuto(), {
-            passive: true,
-          });
+          scroll.addEventListener("mouseenter", () => pauseAuto(), { signal });
+          scroll.addEventListener("mouseleave", () => resumeAuto(), { signal });
+          scroll.addEventListener("touchstart", () => pauseAuto(), { passive: true, signal });
+          scroll.addEventListener("touchend", () => resumeAuto(), { passive: true, signal });
         }, 500);
         scroll.addEventListener("mousedown", (e) => {
           sx = e.pageX - scroll.offsetLeft;
           sl = scroll.scrollLeft;
           scroll.style.cursor = "grabbing";
-        });
-        scroll.addEventListener(
-          "mouseleave",
-          () => (scroll.style.cursor = "grab"),
-        );
-        scroll.addEventListener(
-          "mouseup",
-          () => (scroll.style.cursor = "grab"),
-        );
+        }, { signal });
+        scroll.addEventListener("mouseleave", () => (scroll.style.cursor = "grab"), { signal });
+        scroll.addEventListener("mouseup", () => (scroll.style.cursor = "grab"), { signal });
         scroll.addEventListener("mousemove", (e) => {
           if (!e.buttons) return;
           e.preventDefault();
           scroll.scrollLeft = sl - (e.pageX - scroll.offsetLeft - sx);
-        });
+        }, { signal });
       }
 
       // Grid
