@@ -776,6 +776,11 @@
         gap: 6px;
         align-items: center;
       }
+      .filter-util-buttons {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
       .province-select {
         appearance: none;
         -webkit-appearance: none;
@@ -1771,8 +1776,8 @@
         .province-select-wrap {
           width: 100%;
         }
-        .province-select-wrap .filter-btn-wrap {
-          flex: none;
+        .filter-util-buttons {
+          width: 100%;
         }
         #provinceSelect,
         #distanceSelect {

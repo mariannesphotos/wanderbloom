@@ -3128,8 +3128,8 @@
       }
 
       function updateSavedFilter() {
-        const utilRow = document.querySelector('.province-select-wrap');
-        let wrap = utilRow.querySelector('.saved-filter-wrap');
+        const utilButtons = document.querySelector('.filter-util-buttons');
+        let wrap = utilButtons.querySelector('.saved-filter-wrap');
         if (savedGardens.size > 0) {
           if (!wrap) {
             wrap = document.createElement('div');
@@ -3152,9 +3152,7 @@
               applyFilters();
             });
             wrap.appendChild(btn);
-            // Insert after the reel button wrap, before the first select
-            const firstSelect = utilRow.querySelector('select');
-            utilRow.insertBefore(wrap, firstSelect);
+            utilButtons.appendChild(wrap);
           }
           wrap.querySelector('.saved-filter').textContent = `❤️ Saved (${savedGardens.size})`;
           if (currentFilter === 'saved') wrap.querySelector('.saved-filter').classList.add('active');
