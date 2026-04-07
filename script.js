@@ -2631,6 +2631,25 @@
         if (twDesc) twDesc.setAttribute('content', gardenDesc);
         const twImg = document.querySelector('meta[name="twitter:image"]');
         if (twImg) twImg.setAttribute('content', gardenImg);
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical) canonical.setAttribute('href', gardenUrl);
+        const jsonLd = document.getElementById('gardenJsonLd');
+        if (jsonLd) {
+          const ld = {
+            "@context": "https://schema.org",
+            "@type": "TouristAttraction",
+            "name": g.name,
+            "url": gardenUrl,
+            "geo": { "@type": "GeoCoordinates", "latitude": g.lat, "longitude": g.lng },
+            "touristType": "Photography, Nature",
+            "isLocatedInPlace": { "@type": "Country", "name": "Netherlands" }
+          };
+          if (g.description || g.preview) ld.description = g.description || g.preview;
+          if (g.city) ld.address = { "@type": "PostalAddress", "addressLocality": g.city, "addressCountry": "NL" };
+          if (gardenImg !== 'https://i.imgur.com/KAQbixX.jpeg') ld.image = gardenImg;
+          if (g.visitor_link) ld.hasMap = g.visitor_link;
+          jsonLd.textContent = JSON.stringify(ld);
+        }
         const iconSrc = ICONS[g.category] || "";
         const reelBadge = "";
         const sheetTop = document.getElementById("sheetTop");
@@ -2895,6 +2914,10 @@
         if (twDesc) twDesc.setAttribute('content', 'Over 100 gardens across the Netherlands, curated for nature lovers and photographers.');
         const twImg = document.querySelector('meta[name="twitter:image"]');
         if (twImg) twImg.setAttribute('content', 'https://i.imgur.com/KAQbixX.jpeg');
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical) canonical.setAttribute('href', 'https://mariannesphotos.github.io/wanderbloom/');
+        const jsonLd = document.getElementById('gardenJsonLd');
+        if (jsonLd) jsonLd.textContent = '';
       }
 
       function shareGarden() {
