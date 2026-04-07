@@ -2611,9 +2611,26 @@
         url.searchParams.set("garden", slug);
         history.pushState({ garden: slug }, "", url.toString());
         document.title = `${g.name} — Wander & Bloom`;
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.setAttribute('content', `${g.category}${g.city ? ` · ${g.city}` : ''} · Photography garden map of the Netherlands`);
         const photos = GARDEN_PHOTOS[g.name] || null;
+        const gardenDesc = `${g.category}${g.city ? ` · ${g.city}` : ''} · Photography garden map of the Netherlands`;
+        const gardenUrl = `https://mariannesphotos.github.io/wanderbloom/?garden=${slug}`;
+        const gardenImg = (photos && photos.length) ? photos[0] : (g.featured_img || 'https://i.imgur.com/KAQbixX.jpeg');
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', gardenDesc);
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', `${g.name} — Wander & Bloom`);
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', gardenDesc);
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', gardenUrl);
+        const ogImg = document.querySelector('meta[property="og:image"]');
+        if (ogImg) ogImg.setAttribute('content', gardenImg);
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute('content', `${g.name} — Wander & Bloom`);
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute('content', gardenDesc);
+        const twImg = document.querySelector('meta[name="twitter:image"]');
+        if (twImg) twImg.setAttribute('content', gardenImg);
         const iconSrc = ICONS[g.category] || "";
         const reelBadge = "";
         const sheetTop = document.getElementById("sheetTop");
@@ -2864,6 +2881,20 @@
         document.title = "Wander & Bloom — Photography Garden Map Netherlands";
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) metaDesc.setAttribute('content', 'Free photography garden map of the Netherlands — more than 100 gardens for wandering, nature lovers, and photographers. Find gardens by category and province.');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', 'Wander & Bloom — Photography Garden Map Netherlands');
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', 'More than 100 gardens across the Netherlands, for wandering and photography. Free to use and growing.');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', 'https://mariannesphotos.github.io/wanderbloom/');
+        const ogImg = document.querySelector('meta[property="og:image"]');
+        if (ogImg) ogImg.setAttribute('content', 'https://i.imgur.com/KAQbixX.jpeg');
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute('content', 'Wander & Bloom — Photography Garden Map Netherlands');
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute('content', 'Over 100 gardens across the Netherlands, curated for nature lovers and photographers.');
+        const twImg = document.querySelector('meta[name="twitter:image"]');
+        if (twImg) twImg.setAttribute('content', 'https://i.imgur.com/KAQbixX.jpeg');
       }
 
       function shareGarden() {
