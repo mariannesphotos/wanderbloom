@@ -3099,9 +3099,8 @@
             const pc = photos
               ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
               : "";
-            const heartBtn = `<button class="heart-btn${savedGardens.has(g.name) ? ' saved' : ''}" data-heart="${g.name.replace(/"/g, '&quot;')}" aria-label="Save garden" onclick="event.stopPropagation();toggleSaved(this.dataset.heart);">♥</button>`;
             return `<article class="garden-card" data-garden="${safeG}">
-    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div>${heartBtn}</div>
+    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div></div>
       ${lb}
       ${g.preview ? `<div class="gc-body"><p class="gc-preview">${g.preview}</p></div>` : ""}
     </article>`;
