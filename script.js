@@ -2661,7 +2661,7 @@
       <div class="sheet-subheader cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">
         ${iconSrc ? `<img class="sheet-subheader-icon" src="${iconSrc}" alt="">` : ""}
         <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}${g.city ? ` · <span style="white-space:nowrap">${g.city}</span>` : ""}</div></div>
-        <button class="sheet-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name);this.classList.toggle('saved',savedGardens.has(window._sheetGarden.name));">♥</button>
+        <button class="sheet-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name);">♥</button>
         <button class="sheet-close" onclick="closeSheet()">✕</button>
       </div>`;
         } else {
@@ -2669,7 +2669,7 @@
       <div class="sheet-no-photo-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">
         ${iconSrc ? `<img class="sheet-header-icon" src="${iconSrc}" alt="">` : ""}
         <div class="sheet-header-text">${reelBadge}<div class="sheet-name">${g.name}</div><div class="sheet-cat">${g.category}${g.city ? ` · <span style="white-space:nowrap">${g.city}</span>` : ""}</div></div>
-        <button class="sheet-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name);this.classList.toggle('saved',savedGardens.has(window._sheetGarden.name));">♥</button>
+        <button class="sheet-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name);">♥</button>
         <button class="sheet-close" onclick="closeSheet()">✕</button>
       </div>`;
         }
@@ -3122,9 +3122,14 @@
           savedGardens.add(name);
         }
         localStorage.setItem('wb_saved', JSON.stringify([...savedGardens]));
+        const isSaved = savedGardens.has(name);
         document.querySelectorAll('.heart-btn').forEach(btn => {
-          if (btn.dataset.heart === name) btn.classList.toggle('saved', savedGardens.has(name));
+          if (btn.dataset.heart === name) btn.classList.toggle('saved', isSaved);
         });
+        const sheetHeart = document.getElementById('sheetHeartBtn');
+        if (sheetHeart && window._sheetGarden && window._sheetGarden.name === name) {
+          sheetHeart.classList.toggle('saved', isSaved);
+        }
         updateSavedFilter();
         if (currentFilter === 'saved') applyFilters();
       }
