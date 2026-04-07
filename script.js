@@ -2970,8 +2970,10 @@
               const pc = photos
                 ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
                 : "";
+              const heartCls = savedGardens.has(g.name) ? ' saved' : '';
+              const safeHeart = g.name.replace(/"/g, '&quot;');
               return `<article class="featured-card" data-garden="${safeG}">
-      <div class="fc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="fc-name" style="padding-right:${photos ? "70px" : "28px"}">${g.name}</div><div class="fc-header-top">${ih}<div class="gc-cat-city"><span class="fc-cat">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div></div>
+      <div class="fc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="fc-name" style="padding-right:${photos ? "70px" : "28px"}">${g.name}</div><div class="fc-header-top">${ih}<div class="gc-cat-city"><span class="fc-cat">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div><button class="heart-btn${heartCls}" data-heart="${safeHeart}" aria-label="Save garden">♥</button></div>
       ${rb || vb ? `<div class="fc-links">${rb}${vb}</div>` : ""}
       <div class="fc-body">${g.preview ? `<p class="fc-desc">${g.preview}</p>` : ""}<span class="fc-hint">Tap to read more →</span></div>
     </article>`;
@@ -3101,8 +3103,10 @@
             const pc = photos
               ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
               : "";
+            const heartCls = savedGardens.has(g.name) ? ' saved' : '';
+            const safeHeart = g.name.replace(/"/g, '&quot;');
             return `<article class="garden-card" data-garden="${safeG}">
-    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div></div>
+    <div class="gc-header cat-${g.category.replace(/ & /g, "-").replace(/ /g, "-")}">${pc}<div class="gc-name" style="padding-right:${photos ? "70px" : "14px"}">${g.name}</div><div class="gc-header-top">${ih}<div class="gc-cat-city"><span class="gc-cat-label">${g.category}</span>${g.city ? `<span class="gc-city-label">${g.city}</span>` : ""}</div></div><button class="heart-btn${heartCls}" data-heart="${safeHeart}" aria-label="Save garden">♥</button></div>
       ${lb}
       ${g.preview ? `<div class="gc-body"><p class="gc-preview">${g.preview}</p></div>` : ""}
     </article>`;
@@ -3113,6 +3117,101 @@
       function updateCount(n) {
         document.getElementById("resultsCount").textContent =
           n === GARDENS.length ? `${n} gardens` : `${n} of ${GARDENS.length}`;
+      }
+
+      let savedGardens = new Set(JSON.parse(localStorage.getItem('wb_saved') || '[]'));
+
+      function toggleSaved(name) {
+        if (savedGardens.has(name)) {
+          savedGardens.delete(name);
+        } else {
+          savedGardens.add(name);
+        }
+        localStorage.setItem('wb_saved', JSON.stringify([...savedGardens]));
+        document.querySelectorAll('.heart-btn').forEach(btn => {
+          if (btn.dataset.heart === name) btn.classList.toggle('saved', savedGardens.has(name));
+        });
+        updateSavedFilter();
+        if (currentFilter === 'saved') applyFilters();
+      }
+
+      function updateSavedFilter() {
+        const row = document.getElementById('filterRow');
+        let wrap = row.querySelector('.saved-filter-wrap');
+        if (savedGardens.size > 0) {
+          if (!wrap) {
+            wrap = document.createElement('div');
+            wrap.className = 'filter-btn-wrap saved-filter-wrap';
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn saved-filter';
+            btn.dataset.cat = 'saved';
+            wrap.appendChild(btn);
+            row.appendChild(wrap);
+          }
+          wrap.querySelector('.saved-filter').textContent = `🤍 Saved (${savedGardens.size})`;
+          if (currentFilter === 'saved') wrap.querySelector('.saved-filter').classList.add('active');
+        } else if (wrap) {
+          if (currentFilter === 'saved') {
+            currentFilter = 'all';
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+          }
+          wrap.remove();
+        }
+      }
+
+      function surpriseMe() {
+        let list = [...GARDENS];
+        if (currentFilter === 'reel') list = list.filter(g => g.has_reel);
+        else if (currentFilter === 'saved') list = list.filter(g => savedGardens.has(g.name));
+        else if (currentFilter !== 'all') list = list.filter(g => g.category === currentFilter);
+        if (currentReelFilter) list = list.filter(g => g.has_reel);
+        if (currentProvince !== 'all') list = list.filter(g => g.province === currentProvince);
+        const q = currentSearch.toLowerCase().trim();
+        if (q) list = list.filter(g => g.name.toLowerCase().includes(q) || g.category.toLowerCase().includes(q));
+        if (!list.length) return;
+        openSheet(list[Math.floor(Math.random() * list.length)]);
+      }
+
+      function updateURL() {
+        const url = new URL(window.location.href);
+        if (currentFilter !== 'all') url.searchParams.set('cat', currentFilter);
+        else url.searchParams.delete('cat');
+        if (currentProvince !== 'all') url.searchParams.set('province', currentProvince);
+        else url.searchParams.delete('province');
+        if (currentReelFilter) url.searchParams.set('reel', '1');
+        else url.searchParams.delete('reel');
+        if (currentSearch) url.searchParams.set('q', currentSearch);
+        else url.searchParams.delete('q');
+        history.replaceState(history.state, '', url.toString());
+      }
+
+      function restoreFiltersFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('cat');
+        const province = params.get('province');
+        const reel = params.get('reel');
+        const q = params.get('q');
+        if (cat && cat !== 'all') {
+          const validBtn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+          if (validBtn) { currentFilter = cat; document.querySelectorAll('.filter-btn:not(.reel-filter)').forEach(b => b.classList.remove('active')); validBtn.classList.add('active'); }
+          else if (cat === 'saved' && savedGardens.size > 0) { currentFilter = 'saved'; }
+        }
+        if (province && province !== 'all') {
+          currentProvince = province;
+          const sel = document.getElementById('provinceSelect');
+          if (sel) { sel.value = province; sel.classList.add('active'); }
+        }
+        if (reel === '1') {
+          currentReelFilter = true;
+          const reelBtn = document.querySelector('.reel-filter');
+          if (reelBtn) reelBtn.classList.add('active');
+        }
+        if (q) {
+          currentSearch = q;
+          const input = document.getElementById('searchInput');
+          if (input) input.value = q;
+        }
       }
 
       let currentFilter = "all",
@@ -3175,6 +3274,7 @@
         const q = currentSearch.toLowerCase().trim();
         let list = [...GARDENS];
         if (currentFilter === "reel") list = list.filter((g) => g.has_reel);
+        else if (currentFilter === "saved") list = list.filter((g) => savedGardens.has(g.name));
         else if (currentFilter !== "all")
           list = list.filter((g) => g.category === currentFilter);
         if (currentReelFilter) list = list.filter((g) => g.has_reel);
@@ -3193,6 +3293,7 @@
         renderAll(list);
         updateCount(list.length);
         updateMiniMapFilter(list);
+        updateURL();
       }
       document.getElementById("filterRow").addEventListener("click", (e) => {
         const btn = e.target.closest(".filter-btn");
@@ -3268,8 +3369,19 @@
       buildFilterButtons();
       buildProvinceDropdown();
       initDistanceFilter();
+      updateSavedFilter();
+      restoreFiltersFromURL();
       applyFilters();
       initMiniMap();
+
+      // Surprise me
+      document.getElementById('surpriseBtn').addEventListener('click', surpriseMe);
+
+      // Back to top
+      const backToTopBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
 
       // Fix tooltip overflow on both browse and map filter bars
       function fixTooltipOverflow(wrapSelector, tooltipSelector) {
@@ -3387,6 +3499,9 @@
           const el = document.getElementById(id);
           if (!el) return;
           el.addEventListener("click", (e) => {
+            // If heart was clicked, toggle saved
+            const heart = e.target.closest(".heart-btn");
+            if (heart) { e.stopPropagation(); toggleSaved(heart.dataset.heart); return; }
             // If a link button was clicked, let the browser follow it, don't open sheet
             const link = e.target.closest(".gc-link, .fc-link");
             if (link) return;

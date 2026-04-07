@@ -668,7 +668,7 @@
       }
       .search-input {
         width: 100%;
-        padding: 8px 11px 8px 32px;
+        padding: 8px 95px 8px 32px;
         border: 1.5px solid rgba(255, 255, 255, 0.2);
         border-radius: 8px;
         font-family: "DM Sans", sans-serif;
@@ -1973,4 +1973,68 @@
       .scroll-dot.active {
         background: var(--sage-dark);
         transform: scale(1.25);
+      }
+
+      /* Surprise me button */
+      .surprise-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 0.72rem;
+        color: var(--sage-dark);
+        opacity: 0.5;
+        padding: 4px 6px;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        transition: opacity 0.15s;
+        white-space: nowrap;
+      }
+      .surprise-btn:hover { opacity: 1; }
+
+      /* Heart / save button on cards */
+      .heart-btn {
+        position: absolute;
+        bottom: 7px;
+        left: 8px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.35);
+        padding: 4px;
+        line-height: 1;
+        transition: color 0.15s, transform 0.15s;
+        z-index: 2;
+      }
+      .heart-btn:hover { color: rgba(255, 255, 255, 0.8); transform: scale(1.2); }
+      .heart-btn.saved { color: #e87070; }
+
+      /* Back to top button */
+      #backToTop {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--sage-dark);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      #backToTop.visible {
+        display: flex;
+        opacity: 1;
       }
