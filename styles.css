@@ -1772,6 +1772,10 @@
           width: 100%;
         }
         .province-select-wrap .filter-btn-wrap {
+          flex: 1;
+          min-width: 0;
+        }
+        .province-select-wrap .filter-btn-wrap .filter-btn {
           width: 100%;
         }
         #provinceSelect,

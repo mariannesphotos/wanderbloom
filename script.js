@@ -3134,8 +3134,8 @@
       }
 
       function updateSavedFilter() {
-        const row = document.getElementById('filterRow');
-        let wrap = row.querySelector('.saved-filter-wrap');
+        const utilRow = document.querySelector('.province-select-wrap');
+        let wrap = utilRow.querySelector('.saved-filter-wrap');
         if (savedGardens.size > 0) {
           if (!wrap) {
             wrap = document.createElement('div');
@@ -3143,8 +3143,24 @@
             const btn = document.createElement('button');
             btn.className = 'filter-btn saved-filter';
             btn.dataset.cat = 'saved';
+            btn.addEventListener('click', () => {
+              if (btn.classList.contains('active')) {
+                btn.classList.remove('active');
+                currentFilter = 'all';
+                document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+                applyFilters();
+                return;
+              }
+              document.querySelectorAll('#filterRow .filter-btn').forEach(b => b.classList.remove('active'));
+              document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+              btn.classList.add('active');
+              currentFilter = 'saved';
+              applyFilters();
+            });
             wrap.appendChild(btn);
-            row.appendChild(wrap);
+            // Insert after the reel button wrap, before the first select
+            const firstSelect = utilRow.querySelector('select');
+            utilRow.insertBefore(wrap, firstSelect);
           }
           wrap.querySelector('.saved-filter').textContent = `🤍 Saved (${savedGardens.size})`;
           if (currentFilter === 'saved') wrap.querySelector('.saved-filter').classList.add('active');
