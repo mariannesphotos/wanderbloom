@@ -2687,7 +2687,7 @@
         document.getElementById("sheetDesc").textContent =
           g.description || g.preview || "";
         document.getElementById("sheetCta").innerHTML = g.description
-          ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Save this garden to your bucket list 🌿</button>`
+          ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Save card to your device 🌿</button>`
           : "";
         const sheet = document.getElementById("bottomSheet");
         sheet.style.display = "block";
