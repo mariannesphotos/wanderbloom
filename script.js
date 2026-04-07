@@ -2690,6 +2690,7 @@
           ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Save card to your device 🌿</button>`
           : "";
         const sheet = document.getElementById("bottomSheet");
+        sheet.scrollTop = 0;
         sheet.style.display = "block";
         sheet.style.animation = "slideUp .32s cubic-bezier(.32,.72,0,1)";
         document.getElementById("backdrop").classList.add("open");
