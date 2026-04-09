@@ -10,6 +10,7 @@
         --charcoal: #2d2d2a;
         --mid: #6b6b67;
         --border: #ddd8cc;
+        --border-strong: #8c857c;
       }
       * {
         box-sizing: border-box;
@@ -957,21 +958,24 @@
         text-decoration: none;
         padding: 5px 10px;
         border-radius: 6px;
-        transition: opacity 0.15s;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
         white-space: nowrap;
-      }
-      .fc-link:hover {
-        opacity: 0.8;
       }
       .fc-link.reel {
         background: var(--cream);
         color: var(--sage-dark);
-        border: 1px solid var(--border);
+        border: 1px solid var(--border-strong);
       }
       .fc-link.visit {
         background: var(--cream);
         color: var(--sage-dark);
-        border: 1px solid var(--border);
+        border: 1px solid var(--border-strong);
+      }
+      .fc-link.reel:hover,
+      .fc-link.visit:hover {
+        background: #f7e4da;
+        color: var(--sage-dark);
+        border-color: #e8b9a5;
       }
       .fc-body {
         padding: 11px 14px 14px;
@@ -1203,11 +1207,8 @@
         text-decoration: none;
         padding: 4px 9px;
         border-radius: 5px;
-        transition: opacity 0.15s;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
         white-space: nowrap;
-      }
-      .gc-link:hover {
-        opacity: 0.8;
       }
       .gc-link {
         position: relative;
@@ -1218,7 +1219,13 @@
       .gc-link.visit {
         background: #fff;
         color: var(--sage-dark);
-        border: 1px solid var(--border);
+        border: 1px solid var(--border-strong);
+      }
+      .gc-link.reel:hover,
+      .gc-link.visit:hover {
+        background: #f7e4da;
+        color: var(--sage-dark);
+        border-color: #e8b9a5;
       }
       .gc-body {
         padding: 10px 12px 24px;
@@ -1468,20 +1475,20 @@
         text-decoration: none;
         padding: 9px 16px;
         border-radius: 10px;
-        transition: opacity 0.15s;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
       }
       .sheet-link:hover {
-        opacity: 0.8;
+        opacity: 1;
       }
       .sheet-link.reel {
         background: var(--cream);
         color: var(--sage-dark);
-        border: 1.5px solid var(--border);
+        border: 1.5px solid var(--border-strong);
       }
       .sheet-link.visit {
         background: var(--cream);
         color: var(--sage-dark);
-        border: 1.5px solid var(--border);
+        border: 1.5px solid var(--border-strong);
       }
       .sheet-link.share {
         background: transparent;
@@ -1492,9 +1499,17 @@
       .sheet-link.save {
         background: var(--cream);
         color: var(--sage-dark);
-        border: 1.5px solid var(--border);
+        border: 1.5px solid var(--border-strong);
         cursor: pointer;
         font-family: "DM Sans", sans-serif;
+      }
+      .sheet-link.reel:hover,
+      .sheet-link.visit:hover,
+      .sheet-link.save:hover,
+      .sheet-link.share:hover {
+        background: #f7e4da;
+        color: var(--sage-dark);
+        border-color: #e8b9a5;
       }
       .sheet-save-cta {
         display: block;
@@ -1502,7 +1517,7 @@
         margin-top: 28px;
         padding: 16px 20px;
         background: var(--cream);
-        border: 1.5px solid var(--border);
+        border: 1.5px solid var(--border-strong);
         border-radius: 12px;
         font-family: "DM Sans", sans-serif;
         font-size: 0.88rem;
@@ -1735,9 +1750,9 @@
 
       .sheet-link.link-heart {
         display: none;
-        background: var(--warm-white);
+        background: var(--cream);
         color: var(--charcoal);
-        border: none;
+        border: 1.5px solid var(--border-strong);
         cursor: pointer;
         font-size: 1rem;
         font-family: "DM Sans", sans-serif;
