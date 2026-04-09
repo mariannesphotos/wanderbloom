@@ -62,9 +62,9 @@ Each garden object:
   province: "Utrecht",           // string, required — see provinces below
   city: "Amsterdam",             // string, optional but include if known
   featured: false,               // boolean, required
-  has_reel: false,               // boolean, required — true if reel_link is set
   reel_link: null,               // string | null — Instagram reel/post URL
-  reel_label: "Instagram Post",  // string, optional — defaults to "Instagram Reel"
+  reel_type: "video",            // string, optional — "video" (default) or "photo"; determines icon on button
+  tiktok_link: null,             // string | null — TikTok video URL (optional)
   visitor_link: "https://...",   // string, required — Google Maps URL
   preview: "",                   // string — short preview (leave empty if unknown)
   description: "",               // string — full description (leave empty if unknown)
