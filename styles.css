@@ -1491,7 +1491,7 @@
         cursor: pointer;
       }
       .sheet-link.save {
-        background: var(--warm-white);
+        background: var(--sage-light);
         color: var(--charcoal);
         border: none;
         cursor: pointer;
