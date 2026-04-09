@@ -1733,15 +1733,20 @@
         color: #fff;
       }
 
+      .sheet-link.link-heart {
+        display: none;
+        background: var(--warm-white);
+        color: var(--charcoal);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: "DM Sans", sans-serif;
+      }
+      .sheet-link.link-heart.saved { color: #e87070; }
+
       @media (max-width: 780px) {
-        .sheet-heart,
-        .sheet-close {
-          position: static;
-          top: auto;
-          right: auto;
-          flex-shrink: 0;
-          align-self: flex-start;
-        }
+        .sheet-heart { display: none; }
+        .sheet-link.link-heart { display: inline-flex; }
         .hero-inner {
           grid-template-columns: 1fr;
           gap: 20px;

@@ -2434,6 +2434,7 @@
           lh =
             '<span class="sheet-no-link">Search the name in Google Maps to find it</span>';
         lh += `<button class="sheet-link save" onclick="generateSaveCard()">🖼️ Save card</button>`;
+        lh += `<button class="sheet-link link-heart${savedGardens.has(g.name) ? ' saved' : ''}" id="sheetLinkHeartBtn" aria-label="Save garden" onclick="toggleSaved(window._sheetGarden.name)">♥</button>`;
         document.getElementById("sheetLinks").innerHTML = lh;
         window._sheetGarden = g;
         window._sheetPhotos = photos;
@@ -2884,6 +2885,10 @@
         const sheetHeart = document.getElementById('sheetHeartBtn');
         if (sheetHeart && window._sheetGarden && window._sheetGarden.name === name) {
           sheetHeart.classList.toggle('saved', isSaved);
+        }
+        const linkHeart = document.getElementById('sheetLinkHeartBtn');
+        if (linkHeart && window._sheetGarden && window._sheetGarden.name === name) {
+          linkHeart.classList.toggle('saved', isSaved);
         }
         updateSavedFilter();
         if (currentFilter === 'saved') applyFilters();
