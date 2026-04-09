@@ -22,9 +22,8 @@
       }
       body {
         font-family: "DM Sans", sans-serif;
-        background: var(--cream);
-        color: var(--sage-dark);
-        border: 1px solid var(--border);
+        background: var(--warm-white);
+        color: var(--charcoal);
       }
       body::before {
         content: "";
