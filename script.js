@@ -2434,15 +2434,12 @@
           lh =
             '<span class="sheet-no-link">Search the name in Google Maps to find it</span>';
         lh += `<button class="sheet-link save" onclick="generateSaveCard()">🖼️ Save card</button>`;
-        lh += `<button class="sheet-link share" onclick="shareGarden()">🔗 Share</button>`;
         document.getElementById("sheetLinks").innerHTML = lh;
         window._sheetGarden = g;
         window._sheetPhotos = photos;
         document.getElementById("sheetDesc").textContent =
           g.description || g.preview || "";
-        document.getElementById("sheetCta").innerHTML = g.description
-          ? `<button class="sheet-save-cta" onclick="generateSaveCard()">Save card to your device 🌿</button>`
-          : "";
+        document.getElementById("sheetCta").innerHTML = `<button class="sheet-save-cta" onclick="shareGarden()">🔗 Share</button>`;
         const sheet = document.getElementById("bottomSheet");
         sheet.scrollTop = 0;
         sheet.style.display = "block";
