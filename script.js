@@ -2427,7 +2427,7 @@
         if (g.reel_link)
           lh += `<a class="sheet-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Insta</a>`;
         if (g.tiktok_link)
-          lh += `<a class="sheet-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>`;
+          lh += `<a class="sheet-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">${g.tiktok_link.includes('/photo/') ? "📷" : "🎥"} TikTok</a>`;
         if (g.visitor_link)
           lh += `<a class="sheet-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`;
         if (!lh)
@@ -2722,7 +2722,7 @@
                 ? `<a class="fc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Insta</a>`
                 : "";
               const tb = g.tiktok_link
-                ? `<a class="fc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>`
+                ? `<a class="fc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">${g.tiktok_link.includes('/photo/') ? "📷" : "🎥"} TikTok</a>`
                 : "";
               const vb = g.visitor_link
                 ? `<a class="fc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`
@@ -2844,7 +2844,7 @@
               ? `<a class="gc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Insta</a>`
               : "";
             const tb = g.tiktok_link
-              ? `<a class="gc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>`
+              ? `<a class="gc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">${g.tiktok_link.includes('/photo/') ? "📷" : "🎥"} TikTok</a>`
               : "";
             const vb = g.visitor_link
               ? `<a class="gc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`
