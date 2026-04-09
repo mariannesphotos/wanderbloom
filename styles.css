@@ -964,8 +964,8 @@
         opacity: 0.8;
       }
       .fc-link.reel {
-        background: var(--terracotta);
-        color: #fff;
+        background: var(--terracotta-light);
+        color: var(--charcoal);
       }
       .fc-link.visit {
         background: var(--cream);
@@ -1214,8 +1214,8 @@
         pointer-events: all;
       }
       .gc-link.reel {
-        background: var(--terracotta);
-        color: #fff;
+        background: var(--terracotta-light);
+        color: var(--charcoal);
       }
       .gc-link.visit {
         background: #fff;
@@ -1476,8 +1476,8 @@
         opacity: 0.8;
       }
       .sheet-link.reel {
-        background: var(--terracotta);
-        color: #fff;
+        background: var(--terracotta-light);
+        color: var(--charcoal);
       }
       .sheet-link.visit {
         background: var(--cream);
@@ -1699,8 +1699,8 @@
         border-radius: 5px;
       }
       .popup-plink.reel {
-        background: var(--terracotta);
-        color: #fff;
+        background: var(--terracotta-light);
+        color: var(--charcoal);
       }
       .popup-plink.visit {
         background: var(--cream);
