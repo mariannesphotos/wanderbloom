@@ -1751,7 +1751,7 @@
       .sheet-link.link-heart {
         display: none;
         background: var(--cream);
-        color: var(--charcoal);
+        color: var(--mid);
         border: 1.5px solid var(--border-strong);
         cursor: pointer;
         font-size: 1rem;
