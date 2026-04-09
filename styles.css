@@ -964,7 +964,7 @@
         opacity: 0.8;
       }
       .fc-link.reel {
-        background: var(--terracotta-light);
+        background: var(--warm-white);
         color: var(--charcoal);
       }
       .fc-link.visit {
@@ -1214,7 +1214,7 @@
         pointer-events: all;
       }
       .gc-link.reel {
-        background: var(--terracotta-light);
+        background: var(--warm-white);
         color: var(--charcoal);
       }
       .gc-link.visit {
@@ -1476,7 +1476,7 @@
         opacity: 0.8;
       }
       .sheet-link.reel {
-        background: var(--terracotta-light);
+        background: var(--warm-white);
         color: var(--charcoal);
       }
       .sheet-link.visit {
@@ -1699,7 +1699,7 @@
         border-radius: 5px;
       }
       .popup-plink.reel {
-        background: var(--terracotta-light);
+        background: var(--warm-white);
         color: var(--charcoal);
       }
       .popup-plink.visit {
