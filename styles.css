@@ -1491,8 +1491,8 @@
         cursor: pointer;
       }
       .sheet-link.save {
-        background: var(--sage-dark);
-        color: #fff;
+        background: var(--warm-white);
+        color: var(--charcoal);
         border: none;
         cursor: pointer;
         font-family: "DM Sans", sans-serif;
