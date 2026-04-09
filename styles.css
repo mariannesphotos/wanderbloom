@@ -1214,11 +1214,7 @@
         z-index: 2;
         pointer-events: all;
       }
-      .gc-link.reel {
-        background: var(--cream);
-        color: var(--sage-dark);
-        border: 1px solid var(--border);
-      }
+      .gc-link.reel,
       .gc-link.visit {
         background: #fff;
         color: var(--sage-dark);
