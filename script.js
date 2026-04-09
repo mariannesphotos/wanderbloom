@@ -2425,7 +2425,7 @@
         }
         let lh = "";
         if (g.reel_link)
-          lh += `<a class="sheet-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Instagram</a>`;
+          lh += `<a class="sheet-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Insta</a>`;
         if (g.tiktok_link)
           lh += `<a class="sheet-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>`;
         if (g.visitor_link)
@@ -2719,7 +2719,7 @@
                 : "";
               const safeG = JSON.stringify(g).replace(/"/g, "&quot;");
               const rb = g.reel_link
-                ? `<a class="fc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Instagram</a>`
+                ? `<a class="fc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Insta</a>`
                 : "";
               const tb = g.tiktok_link
                 ? `<a class="fc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>`
@@ -2841,7 +2841,7 @@
               : "";
             const safeG = JSON.stringify(g).replace(/"/g, "&quot;");
             const rb = g.reel_link
-              ? `<a class="gc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Instagram</a>`
+              ? `<a class="gc-link reel" href="${g.reel_link}" target="_blank" rel="noopener noreferrer">${g.reel_type === "photo" ? "📷" : "🎥"} Insta</a>`
               : "";
             const tb = g.tiktok_link
               ? `<a class="gc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>`
