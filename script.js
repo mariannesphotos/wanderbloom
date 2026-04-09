@@ -2442,8 +2442,8 @@
           g.description || g.preview || "";
         document.getElementById("sheetCta").innerHTML = `<button class="sheet-save-cta" onclick="shareGarden()">🔗 Share</button>`;
         const sheet = document.getElementById("bottomSheet");
-        sheet.scrollTop = 0;
         sheet.style.display = "block";
+        sheet.scrollTop = 0;
         sheet.style.animation = "slideUp .32s cubic-bezier(.32,.72,0,1)";
         document.getElementById("backdrop").classList.add("open");
         document.body.style.overflow = "hidden";
