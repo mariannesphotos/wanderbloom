@@ -1734,6 +1734,14 @@
       }
 
       @media (max-width: 780px) {
+        .sheet-heart,
+        .sheet-close {
+          position: static;
+          top: auto;
+          right: auto;
+          flex-shrink: 0;
+          align-self: flex-start;
+        }
         .hero-inner {
           grid-template-columns: 1fr;
           gap: 20px;
