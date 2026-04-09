@@ -2429,7 +2429,7 @@
         if (g.tiktok_link)
           lh += `<a class="sheet-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">${g.tiktok_link.includes('/photo/') ? "📷" : "🎥"} TikTok</a>`;
         if (g.visitor_link)
-          lh += `<a class="sheet-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`;
+          lh += `<a class="sheet-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Maps</a>`;
         if (!lh)
           lh =
             '<span class="sheet-no-link">Search the name in Google Maps to find it</span>';
@@ -2725,7 +2725,7 @@
                 ? `<a class="fc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">${g.tiktok_link.includes('/photo/') ? "📷" : "🎥"} TikTok</a>`
                 : "";
               const vb = g.visitor_link
-                ? `<a class="fc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`
+                ? `<a class="fc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Maps</a>`
                 : "";
               const pc = photos
                 ? `<div class="gc-photo-circle"><img src="${photos[0]}" alt=""></div>`
@@ -2847,7 +2847,7 @@
               ? `<a class="gc-link reel" href="${g.tiktok_link}" target="_blank" rel="noopener noreferrer">${g.tiktok_link.includes('/photo/') ? "📷" : "🎥"} TikTok</a>`
               : "";
             const vb = g.visitor_link
-              ? `<a class="gc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>`
+              ? `<a class="gc-link visit" href="${g.visitor_link}" target="_blank" rel="noopener noreferrer">📍 Maps</a>`
               : "";
             const lb = rb || tb || vb ? `<div class="gc-links">${rb}${tb}${vb}</div>` : "";
             const photos = GARDEN_PHOTOS[g.name];
